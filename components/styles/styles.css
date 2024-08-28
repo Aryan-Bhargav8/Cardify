@@ -1,0 +1,26 @@
+/* styles.css */
+body.light {
+    background-color: white;
+    color: black;
+}
+
+body.dark {
+    background-color: black;
+    color: white;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.dark\:bg-black {
+    background-color: black;
+}
+
+.text-black {
+    color: black;
+}
+
+.dark\:text-white {
+    color: white;
+}
