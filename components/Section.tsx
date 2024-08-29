@@ -23,7 +23,7 @@ const Section: React.FC<{
 
 
     return (
-        <section className="bg-white dark:bg-black p-8 min-h-screen flex flex-col" 
+        <section className="bg-white dark:bg-black p-8 min-h-screen flex flex-col " 
         ref={container}>
             {children}
         </section>

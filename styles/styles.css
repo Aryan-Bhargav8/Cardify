@@ -1,0 +1,124 @@
+/* styles.css
+body.light {
+    background-color: white;
+    color: black;
+}
+
+body.dark {
+    background-color: black;
+    color: white;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.dark\:bg-black {
+    background-color: black;
+}
+
+.text-black {
+    color: black;
+}
+
+.dark\:text-white {
+    color: white;
+} */
+.paragraph {
+    display: flex;
+    font-size: 100px;
+    line-height: 1;
+    padding: 40px;
+    max-width: 1280px;
+    color: white;
+    flex-wrap: wrap;
+  }
+  
+.paragraph .word {
+    position: relative;
+    margin-right: 12px;
+    margin-top: 12px;
+  }
+  
+.paragraph .word .shadow {
+    position: absolute;
+    opacity: 20%;
+  }
+
+  .cardContainer {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -25%;
+    height: 500px;
+    width: 1000px;
+    border-radius: 25px;
+    padding: 50px;
+    transform-origin: top;
+  }
+  
+  .card h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 28px;
+  }
+  
+  .card .body {
+    display: flex;
+    height: 100%;
+    margin-top: 50px;
+    gap: 50px;
+  }
+  
+  .card .body .description {
+    width: 40%;
+    position: relative;
+    top: 10%;
+  }
+  
+  .card .body .description p {
+    font-size: 16px;
+  }
+  
+  .card .body .description p::first-letter {
+    font-size: 28px;
+    font-family: 'Title';
+  }
+  
+  .card .body .description span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .card .body .description span a {
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .card .body .imageContainer {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+  
+  .card .body .imageContainer .inner {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card .body .imageContainer img {
+    object-fit: cover;
+  }
