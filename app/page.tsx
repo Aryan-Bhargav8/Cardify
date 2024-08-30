@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, MouseEventHandler } from 'react';
 import styles from '@/styles/page.module.css'
 import Navbar from '@/components/nav/navbar'
 import Head from 'next/head'; 
@@ -13,13 +13,17 @@ import Paragraph from '@/components/Paragraph';
 import Word from '@/components/Word';
 import Character from '@/components/Character';
 import { FloatingDock } from "@/components/ui/floating-dock";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import Link from "next/link";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 // import {projects} from '@/data';
 import Lenis from '@studio-freight/lenis';
 // import Card from '@/components/Card/index';
+import Example from '@/components/HorizontalScrollCarousel';
 import { useScroll } from 'framer-motion';
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import GradientButton from '@/components/GradientButton';
 
 import {
   IconBrandGithub,
@@ -29,90 +33,43 @@ import {
   IconNewSection,
   IconTerminal2,
 } from "@tabler/icons-react";
+import { Stars } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { FiArrowRight } from "react-icons/fi";
+import {
+  useMotionTemplate,
+  useMotionValue,
+  motion,
+  animate,
+} from "framer-motion";
 
+const COLORS_TOP = ["#a855f7", "#8b5cf6", "#ec4899", "#DD335C"];
 const paragraph = "At Cardify, we believe that studying should be both effective and enjoyable. Our platform is designed to simplify the learning process, helping you retain information more efficiently through customizable flashcards and interactive tools."
 const paragraph1 = "Whether you're preparing for an exam, learning a new language, or mastering a new topic, Cardify provides the resources you need to succeed. With our user-friendly interface and diverse features, you can create, share, and study flashcards tailored to your learning style."
 const paragraph2 = "Join thousands of learners who have transformed their study habits with Cardify. Let's make learning easier, together!"
 const paragraph3 = "Unlock your full academic potential with Cardify! Our platform is designed to transform the way you study, making learning more effective and enjoyable. Whether you're preparing for exams or mastering new concepts, we have the tools to help you succeed."
-const DummyContent = () => {
-  return (
-    <>
-      {[...new Array(3).fill(1)].map((_, index) => {
-        return (
-          <div
-            key={"dummy-content" + index}
-            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
-          >
-            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
-              <span className="font-bold text-neutral-700 dark:text-neutral-200">
-                The first rule of Apple club is that you boast about Apple club.
-              </span>{" "}
-              Keep a journal, quickly jot down a grocery list, and take amazing
-              class notes. Want to convert those notes to text? No problem.
-              Langotiya jeetu ka mara hua yaar is ready to capture every
-              thought.
-            </p>
-            <Image
-              src="/assets/bg.png"
-              alt="Macbook mockup from Aceternity UI"
-              height="500"
-              width="500"
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
-            />
-          </div>
-        );
-      })}
-    </>
-  );
-};
- 
 
-const data = [
-  {
-    category: "",
-    title: "Flashcard Creation",
-    src: "/assets/p8.jpg",
-    content: <DummyContent />,
-  },
-  {
-    category: "",
-    title: "Study Schedule Planner",
-    src: "/assets/p6.png",
-    content: <DummyContent />,
-  },
-  {
-    category: "",
-    title: "Collaborative Study Groups",
-    src: "/assets/p9.jpg",
-    content: <DummyContent />,
-  },
- 
-  {
-    category: "",
-    title: "Interactive Quizzes",
-    src: "/assets/p2.jpg",
-    content: <DummyContent />,
-  },
-  {
-    category: "",
-    title: "Note-Taking Tools",
-    src: "/assets/p3.jpg",
-    content: <DummyContent />,
-  },
-  {
-    category: "",
-    title: "Mobile Accessibility",
-    src: "/assets/p7.jpg",
-    content: <DummyContent />,
-  },
-  
-];
+
+
 
 export default function Home() {
   const [theme, setTheme] = useState('light');
-  const cards = data.map((card, index) => (
-    <Card key={card.src} card={card} index={index} />
-  ));
+
+  const color = useMotionValue(COLORS_TOP[0]);
+
+  useEffect(() => {
+    animate(color, COLORS_TOP, {
+      ease: "easeInOut",
+      duration: 6,
+      repeat: Infinity,
+      repeatType: "mirror",
+    });
+  }, []);
+
+  const backgroundImage = useMotionTemplate`radial-gradient(150% 150% at 50% 0%, white 40%, ${color})`;  const border = useMotionTemplate`1px solid ${color}`;
+  const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
+
+  
   const placeholders = [
     "Put your YouTube link to start",
     "Put your PDF link to start",
@@ -236,6 +193,24 @@ export default function Home() {
     gsap.set(secondText.current, {xPercent: xPercent})
     xPercent += 0.1 * direction;
     requestAnimationFrame(animate);
+  };
+
+  const getMousePosition = (e: React.MouseEvent<Element, MouseEvent>) => {
+
+    const { width, height, left, top } = e.currentTarget.getBoundingClientRect();
+
+    const currentMouseX = e.clientX - left;
+    const currentMouseY = e.clientY - top;
+
+    return {
+      currentMouseX,
+      currentMouseY,
+      containerWidth: width, 
+      containerHight: height,
+    };
+  };
+  const handleMouseMove: MouseEventHandler = (e) => {
+    const { currentMouseX, currentMouseY, containerWidth, containerHight} = getMousePosition(e)
   }
   
 
@@ -249,8 +224,49 @@ export default function Home() {
         items={links}
       />
     </div>
+
+    {/* <motion.section
+      style={{
+        backgroundImage,
+      }}
+      className="relative grid min-h-screen place-content-center overflow-hidden bg-white dark:bg-gray-950 px-4 py-24 text-gray-200"
+    >
+      <div className="relative z-10 flex flex-col items-center">
+      
+      <h3 className="max-w-5xl bg-gradient-to-br from-slate-950 to-slate-400 bg-clip-text text-center text-3xl font-medium leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight">
+      Transform your study sessions into a breeze with 
+      </h3>
+      <h1 className="text-5xl xl:text-7xl font-bold gradient-text animate-gradient mb-6">
+                Cardify
+      </h1> 
+        
+        <motion.button
+          style={{
+            border,
+            boxShadow,
+          }}
+          whileHover={{
+            scale: 1.015,
+          }}
+          whileTap={{
+            scale: 0.985,
+          }}
+          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-gray-50 transition-colors hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500"
+        >
+          Get Started
+          <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+        </motion.button>
+      </div>
+
+      <div className="absolute inset-0 z-0">
+        <Canvas>
+          <Stars radius={50} count={2500} factor={4} fade speed={2} />
+        </Canvas>
+      </div>
+    </motion.section> */}
+
     <Section theme='light' setTheme={setTheme}>
-  <BackgroundBeamsWithCollision>
+      <BackgroundBeamsWithCollision>
     <div className="text-center z-20 relative">
       <h1 className="text-2xl md:text-4xl lg:text-7xl font-bold text-black dark:text-white font-sans tracking-tight">
         Transform your study sessions into a breeze with{" "}
@@ -292,7 +308,6 @@ export default function Home() {
               <Paragraph paragraph={paragraph}/>
               <Paragraph paragraph={paragraph1}/>
               <Paragraph paragraph={paragraph2}/>
-              {/* <div style={{height: "100vh"}}></div> */}
         
             </div>
             <div className="">
@@ -331,7 +346,7 @@ export default function Home() {
         <div className="flex-1 flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8">
             <div className="flex flex-col gap-8 justify-center">
-            <h2 className="text-5xl xl:text-7xl max-w-7xl font-bold bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 bg-clip-text text-transparent  ">
+            <h2 className="text-5xl xl:text-7xl max-w-7xl font-bold gradient-text animate-gradient ">
             Maximize Your Study Potential
             </h2>               
             <Paragraph paragraph={paragraph3}/>
@@ -352,14 +367,166 @@ export default function Home() {
 
       
 
+     
+
+      {/* <Section theme='dark' setTheme={setTheme}>
+      <div className="flex items-center justify-center h-screen">
+      <GradientButton text="Start Free Trial" href="https://youtube.com" />
+      </div>
+      </Section> */}
+
       <Section theme='dark' setTheme={setTheme}>
-      <div className="w-full h-full py-20 ml-4">
-      <h2 className="text-5xl  xl:text-7xl font-bold bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 bg-clip-text text-transparent text-center">
+      <h2 className="text-5xl xl:text-7xl font-bold gradient-text animate-gradient text-center">
                 Our Features
-      </h2> 
-      <Carousel items={cards} />
-    </div> 
+      </h2>
+      <div className="flex flex-wrap gap-4 justify-center">
+
+      <CardContainer  className="inter-var">
+        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black border-purple-500 w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+          <CardItem translateZ="50" className="text-xl font-bold gradient-text">
+          Document Summarization
+          </CardItem>
+          <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-100">
+          Automatically summarize academic papers and PDFs to highlight key points, making it easier for students to grasp essential information quickly.
+          </CardItem>
+          <CardItem translateZ="100" className="w-full mt-4">
+            <Image
+              src="/assets/feature1.jpg"
+              height="300"
+              width="300"
+              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt="thumbnail"
+            />
+          </CardItem>
+          <div className="flex justify-start mb-4 mt-20">
+            <GradientButton text="Try Now →" href="https://youtube.com" />
+          </div>
+        </CardBody>
+      </CardContainer>
+  
+      <CardContainer  className="inter-var">
+        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black border-purple-500 w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+          <CardItem translateZ="50" className="text-xl font-bold gradient-text">
+          Video Summarization
+          </CardItem>
+          <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-100">
+          Analyze educational videos and provide concise summaries or key takeaways, allowing students to focus on important content without watching entire videos.
+          </CardItem>
+          <CardItem translateZ="100" className="w-full mt-4">
+            <Image
+              src="/assets/feature2.jpg"
+              height="300"
+              width="300"
+              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt="thumbnail"
+            />
+          </CardItem>
+          <div className="flex justify-start mb-4 mt-20">
+            <GradientButton text="Try Now →" href="https://youtube.com" />
+          </div>
+        </CardBody>
+      </CardContainer>
+  
+      <CardContainer  className="inter-var">
+        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black border-purple-500 w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+          <CardItem translateZ="50" className="text-xl font-bold gradient-text">
+          Flashcard Creation
+          </CardItem>
+          <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-100">
+          Generate flashcards from summarized content, enabling students to study key concepts in a quick and efficient manner.
+          </CardItem>
+          <CardItem translateZ="100" className="w-full mt-4">
+            <Image
+              src="/assets/feature3.jpg"
+              height="300"
+              width="300"
+              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt="thumbnail"
+            />
+          </CardItem>
+          <div className="flex justify-start mb-4 mt-20">
+            <GradientButton text="Try Now →" href="https://youtube.com" />
+          </div>
+        </CardBody>
+      </CardContainer>
+  
+      <CardContainer  className="inter-var">
+        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black border-purple-500 w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+          <CardItem translateZ="50" className="text-xl font-bold gradient-text">
+          User-Friendly Interface
+          </CardItem>
+          <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-100">
+          Ensure a clean, user-friendly interface that is not only visually appealing but also highly intuitive. This interface seamlessly support multiple languages
+          </CardItem>
+          <CardItem translateZ="100" className="w-full mt-4">
+            <Image
+              src="/assets/feature4.jpg"
+              height="300"
+              width="300"
+              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt="thumbnail"
+            />
+          </CardItem>
+          <div className="flex justify-start mb-4 mt-20">
+            <GradientButton text="Try Now →" href="https://youtube.com" />
+          </div>
+        </CardBody>
+      </CardContainer>
+      <CardContainer  className="inter-var">
+        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black border-purple-500 w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+          <CardItem translateZ="50" className="text-xl font-bold gradient-text">
+          Multi-Format Support
+          </CardItem>
+          <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-100">
+          Support various file formats, including PDFs, Word documents, and video links, for seamless integration of study materials.
+
+          </CardItem>
+          <CardItem translateZ="100" className="w-full mt-4">
+            <Image
+              src="/assets/feature6.jpg"
+              height="300"
+              width="300"
+              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt="thumbnail"
+            />
+          </CardItem>
+          <div className="flex justify-start mb-4 mt-20">
+            <GradientButton text="Try Now →" href="https://youtube.com" />
+          </div>
+        </CardBody>
+      </CardContainer>
+      <CardContainer  className="inter-var">
+        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black border-purple-500 w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+          <CardItem translateZ="50" className="text-xl font-bold gradient-text">
+          Quiz Generation
+          </CardItem>
+          <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-100">
+          Create quizzes based on the content of papers, PDFs, and videos, allowing students to test their knowledge and reinforce learning.
+
+          </CardItem>
+          <CardItem translateZ="100" className="w-full mt-4">
+            <Image
+              src="/assets/feature5.jpg"
+              height="300"
+              width="300"
+              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt="thumbnail"
+            />
+          </CardItem>
+          <div className="flex justify-start mb-4 mt-20">
+            <GradientButton text="Try Now →" href="https://youtube.com" />
+          </div>
+        </CardBody>
+      </CardContainer>
+  
+      </div>
       </Section>
+
+      {/* <Section theme='dark' setTheme={setTheme}>
+      <Example />
+      </Section> */}
+
+      
 
       <Section theme='light' setTheme={setTheme}>
       <footer className="text-black dark:text-white py-6">

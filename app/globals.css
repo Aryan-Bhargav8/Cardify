@@ -57,6 +57,19 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  /* Add gradient-text class */
+  .gradient-text {
+    background: linear-gradient(to right, #a855f7, #8b5cf6, #ec4899, #8b5cf6, #ec4899, #a855f7);
+    -webkit-background-clip: text; /* For Safari */
+    -webkit-text-fill-color: transparent; /* For Safari */
+    background-size: 300% 300%;
+    background-clip: text; /* Standard */
+    color: transparent; /* Fallback for other browsers */
+    
+  }
+
+  
 }
 
 @layer base {
