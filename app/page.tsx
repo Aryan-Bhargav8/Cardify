@@ -301,7 +301,7 @@ export default function Home() {
         <div className="flex-1 flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8">
             <div className="flex flex-col gap-8 justify-center">
-            <h2 className="text-5xl xl:text-7xl font-bold bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 bg-clip-text text-transparent">
+            <h2 className="text-5xl xl:text-7xl font-bold gradient-text animate-gradient">
                 About Us
             </h2>              
               <Paragraph paragraph={paragraph}/>
@@ -333,7 +333,7 @@ export default function Home() {
         <source src="/assets/v1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className="absolute inset-0 bg-black opacity-40"></div>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative z-10 flex items-center justify-center h-full">
         <h3 className="text-white text-3xl md:text-5xl font-bold">
         Ace your exams in half the time you usually spend studying.
