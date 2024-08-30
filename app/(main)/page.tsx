@@ -22,6 +22,7 @@ import Lenis from '@studio-freight/lenis';
 // import Card from '@/components/Card/index';
 import Example from '@/components/HorizontalScrollCarousel';
 import { useScroll } from 'framer-motion';
+import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import GradientButton from '@/components/GradientButton';
 
 import {
@@ -366,6 +367,7 @@ export default function Home() {
 
       
 
+     
 
       {/* <Section theme='dark' setTheme={setTheme}>
       <div className="flex items-center justify-center h-screen">
