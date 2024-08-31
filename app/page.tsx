@@ -15,15 +15,15 @@ import Character from '@/components/Character';
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Link from "next/link";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+// import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
+// import HoverDevCards from '@/components/HoverDevCards';
 // import {projects} from '@/data';
 import Lenis from '@studio-freight/lenis';
 // import Card from '@/components/Card/index';
-import Example from '@/components/HorizontalScrollCarousel';
+// import Example from '@/components/HorizontalScrollCarousel';
 import { useScroll } from 'framer-motion';
 import GradientButton from '@/components/GradientButton';
-import Marquee from '@/components/Marquee';
 
 import {
   IconBrandGithub,
@@ -220,7 +220,7 @@ export default function Home() {
       {/* <Navbar /> */}
       <div className="flex items-center justify-center  w-full">
       <FloatingDock
-        mobileClassName="" // only for demo, remove for production
+        mobileClassName="" 
         items={links}
       />
     </div>
@@ -232,14 +232,14 @@ export default function Home() {
     className="relative grid min-h-screen place-content-center overflow-hidden bg-white dark:bg-gray-950 px-4 py-24 text-gray-200 rounded-3xl"
   >
     <header className="absolute top-0 left-0 right-0 flex justify-center p-4">
-      <img src="/assets/logo.webp" alt="Logo" className="h-20" />
+      <img src="/assets/logo.webp" alt="Logo" className="h-24 opacity-30" />
     </header>
 
     <div className="relative z-10 flex flex-col gap-6 items-center">
-      <h1 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient">
+      <h1 className="text-7xl xl:text-9xl font-bold gradient-text animate-gradient">
         Cardify
       </h1>
-      <h3 className="text-4xl xl:text-5xl font-bold text-neutral-950">
+      <h3 className="text-5xl xl:text-7xl font-bold text-neutral-950">
         Study Smart Not Hard!
       </h3>
 
@@ -300,7 +300,7 @@ export default function Home() {
 
 </Section> */}
       
-      
+      {/* About Section */}
       <Section theme='dark' setTheme={setTheme}>
         <div className="flex-1 flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8">
@@ -533,7 +533,7 @@ export default function Home() {
         {/* <Marquee text="Success isn't about working harder; it's about working smarter. Focus on understanding, not just memorizing, and let efficiency be your guide." />
       </div> */}
       
-
+      
       <Section theme='light' setTheme={setTheme}>
       <footer className="text-black dark:text-white py-6">
         
