@@ -23,6 +23,7 @@ import Lenis from '@studio-freight/lenis';
 import Example from '@/components/HorizontalScrollCarousel';
 import { useScroll } from 'framer-motion';
 import GradientButton from '@/components/GradientButton';
+import Marquee from '@/components/Marquee';
 
 import {
   IconBrandGithub,
@@ -524,6 +525,10 @@ export default function Home() {
       <Example />
       </Section> */}
 
+      <div>
+        {/* <h1>Welcome to My Next.js App</h1> */}
+        <Marquee text="Success isn't about working harder; it's about working smarter. Focus on understanding, not just memorizing, and let efficiency be your guide." />
+      </div>
       
 
       <Section theme='light' setTheme={setTheme}>
