@@ -224,48 +224,59 @@ export default function Home() {
         items={links}
       />
     </div>
-
-    {/* <motion.section
-      style={{
-        backgroundImage,
-      }}
-      className="relative grid min-h-screen place-content-center overflow-hidden bg-white dark:bg-gray-950 px-4 py-24 text-gray-200"
-    >
-      <div className="relative z-10 flex flex-col items-center">
-      
-      <h3 className="max-w-5xl bg-gradient-to-br from-slate-950 to-slate-400 bg-clip-text text-center text-3xl font-medium leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight">
-      Transform your study sessions into a breeze with 
-      </h3>
-      <h1 className="text-5xl xl:text-7xl font-bold gradient-text animate-gradient mb-6">
-                Cardify
-      </h1> 
-        
-        <motion.button
-          style={{
-            border,
-            boxShadow,
-          }}
-          whileHover={{
-            scale: 1.015,
-          }}
-          whileTap={{
-            scale: 0.985,
-          }}
-          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-gray-50 transition-colors hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500"
-        >
-          Get Started
-          <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
-        </motion.button>
-      </div>
-
-      <div className="absolute inset-0 z-0">
-        <Canvas>
-          <Stars radius={50} count={2500} factor={4} fade speed={2} />
-        </Canvas>
-      </div>
-    </motion.section> */}
-
     <Section theme='light' setTheme={setTheme}>
+  <motion.section
+    style={{
+      backgroundImage,
+    }}
+    className="relative grid min-h-screen place-content-center overflow-hidden bg-white dark:bg-gray-950 px-4 py-24 text-gray-200 rounded-3xl"
+  >
+    <header className="absolute top-0 left-0 right-0 flex justify-center p-4">
+      <img src="/assets/logo.webp" alt="Logo" className="h-20" />
+    </header>
+
+    <div className="relative z-10 flex flex-col gap-6 items-center">
+      <h1 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient">
+        Cardify
+      </h1>
+      <h3 className="text-4xl xl:text-5xl font-bold text-neutral-950">
+        Study Smart Not Hard!
+      </h3>
+
+      <PlaceholdersAndVanishInput
+        placeholders={placeholders}
+        onChange={handleChange}
+        onSubmit={onSubmit}
+      />
+
+      {/* Uncomment the button if needed */}
+      {/* <motion.button
+        style={{
+          border,
+          boxShadow,
+        }}
+        whileHover={{
+          scale: 1.015,
+        }}
+        whileTap={{
+          scale: 0.985,
+        }}
+        className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-gray-50 transition-colors hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500"
+      >
+        Get Started
+        <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+      </motion.button> */}
+    </div>
+
+    <div className="absolute inset-0 z-0">
+      <Canvas>
+        <Stars radius={50} count={2500} factor={4} fade speed={2} />
+      </Canvas>
+    </div>
+  </motion.section>
+</Section>
+
+    {/* <Section theme='light' setTheme={setTheme}>
       <BackgroundBeamsWithCollision>
     <div className="text-center z-20 relative">
       <h1 className="text-2xl md:text-4xl lg:text-7xl font-bold text-black dark:text-white font-sans tracking-tight">
@@ -279,13 +290,6 @@ export default function Home() {
           </div>
         </div>
       </h1>
-      {/* Add your paragraph or h3 here */}
-      {/* <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
-        Discover how Cardify can enhance your learning experience and help you retain information effortlessly.
-      </p>
-      <h3 className="mt-2 text-xl text-gray-800 dark:text-gray-200">
-        
-      </h3> */}
       <PlaceholdersAndVanishInput
         placeholders={placeholders}
         onChange={handleChange}
@@ -294,8 +298,7 @@ export default function Home() {
     </div>
   </BackgroundBeamsWithCollision>
 
-  {/* Other content can go here */}
-</Section>
+</Section> */}
       
       
       <Section theme='dark' setTheme={setTheme}>
@@ -525,10 +528,10 @@ export default function Home() {
       <Example />
       </Section> */}
 
-      <div>
+      {/* <div> */}
         {/* <h1>Welcome to My Next.js App</h1> */}
-        <Marquee text="Success isn't about working harder; it's about working smarter. Focus on understanding, not just memorizing, and let efficiency be your guide." />
-      </div>
+        {/* <Marquee text="Success isn't about working harder; it's about working smarter. Focus on understanding, not just memorizing, and let efficiency be your guide." />
+      </div> */}
       
 
       <Section theme='light' setTheme={setTheme}>
