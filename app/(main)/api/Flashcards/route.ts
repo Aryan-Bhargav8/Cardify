@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     
         const model: GenerativeModel = genAI.getGenerativeModel({ model: 'gemini-pro' });
     
-        const prompt = `Create ${count} flashcards for the topic: "${topic}".
+        const prompt = `Create ${count} flashcards for the topic: "${extractedData}".
           Make questions regarding the topic on your own, for the front side, and answers for the back side.
           Format the response as a JSON array of objects, each containing "question" and "answer" keys.
           Do not include any additional wrapper object or keys. The response should start and end with square brackets.
