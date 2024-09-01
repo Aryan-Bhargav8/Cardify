@@ -20,53 +20,6 @@ const paragraph2 = "To proceed with your purchase, please fill in your billing d
 const paragraph3 = "We value your security and privacy. All transactions are processed through a secure payment gateway, using industry-standard encryption to protect your sensitive information.";
 
 
-const pricingPlans = [
-  {
-    id: 1,
-    name: 'Free Plan',
-    price: '0',
-    bestFor: 'Best for 1-5 users',
-    features: [
-      { text: 'One workspace', available: true },
-      { text: 'Email support', available: true },
-      { text: '1 day data retention', available: false },
-      { text: 'Custom roles', available: false },
-      { text: 'Priority support', available: false },
-      { text: 'SSO', available: false },
-    ],
-    buttonText: 'Get started free',
-  },
-  {
-    id: 2,
-    name: 'Pro Plan',
-    price: '79',
-    bestFor: 'Best for 5-50 users',
-    features: [
-      { text: 'Five workspaces', available: true },
-      { text: 'Email support', available: true },
-      { text: '7 day data retention', available: true },
-      { text: 'Custom roles', available: true },
-      { text: 'Priority support', available: true },
-      { text: 'SSO', available: false },
-    ],
-    buttonText: '14-day free trial',
-  },
-  {
-    id: 3,
-    name: 'Basic Plan',
-    price: 'Contact us',
-    bestFor: 'Best for 50+ users',
-    features: [
-      { text: 'Unlimited workspaces', available: true },
-      { text: 'Email support', available: true },
-      { text: '30 day data retention', available: true },
-      { text: 'Custom roles', available: true },
-      { text: 'Priority support', available: true },
-      { text: 'SSO', available: true },
-    ],
-    buttonText: 'Contact us',
-  },
-];
 
 export default function PaymentPage() {
     const [theme, setTheme] = useState('light');
@@ -231,60 +184,7 @@ export default function PaymentPage() {
         
       </Section>
         <Section theme='dark' setTheme={setTheme}>
-        <div className="bg-black text-white py-20">
-            <h2 className="text-5xl xl:text-6xl mb-5 font-bold gradient-text animate-gradient pb-2 text-center">
-            Pricing
-            </h2>
-            <div className="mb-8">
-              <div className="relative w-full h-[15rem]">
-                <Image 
-                  src='/assets/undraw_credit_card_re_blml.svg' 
-                  alt=''
-                  fill 
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
-            </div>
-      <div className=" max-w-6xl lg:mx-auto sm:mx-10 grid grid-cols-1 md:grid-cols-3 gap-10 ">
-        {pricingPlans.map((plan) => (
-          <div key={plan.id} className="border-2 border-neutral-500 rounded-lg p-6 text-center">
-            <h2 className="text-xl  mb-4 text-neutral-300">{plan.name}</h2>
-            <p className="text-3xl mb-2 font-bold gradient-text animate-gradient">${plan.price}/mo</p>
-            <p className="mb-4">{plan.bestFor}</p>
-            <hr className='border-neutral-200 mb-4 mx-8' />
-            <ul className="mb-6">
-              {plan.features.map((feature, index) => (
-                <li key={index} className="flex items-center justify-center mb-2">
-                  {feature.available ? (
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 bg-neutral-100 p-1 rounded-full text-violet-500 mr-2 font-bold"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M7.629 12.133l-3.77-3.77a1 1 0 10-1.414 1.414l4.5 4.5a1 1 0 001.414 0l10-10a1 1 0 10-1.414-1.414l-9.293 9.293z" />
-                  </svg>
-                  ) : (
-                    <svg className="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm0 18C5.58 18 2 14.42 2 10S5.58 2 10 2s8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2V5zm0 8h2v2h-2v-2z" />
-                    </svg>
-                  )}
-                  <span className={feature.available ? 'text-gray-300' : 'text-gray-500'}>
-                    {feature.text}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-center mb-4 mt-20">
-            <GradientButton text={plan.buttonText} href="https://youtube.com" />
-            </div>
-            {/* <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              
-            </button> */}
-          </div>
-        ))}
-      </div>
-    </div>
+          <div></div>
         </Section>
         <Section theme='dark' setTheme={setTheme}>
             <Footer />

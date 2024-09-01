@@ -9,6 +9,15 @@ const Footer = () => {
     const handlePayment = async () => {
         router.push('/payment');
     };
+    const handleFaQ = async () => {
+        router.push('/faq');
+    };
+    const handleTeam = async () => {
+        router.push('/team');
+    };
+    const handleContact = async () => {
+        router.push('/contact');
+    };
 
   return (
     <section className="">
@@ -16,15 +25,15 @@ const Footer = () => {
         <div className="grid place-content-center gap-10 px-8 py-24 text-black dark:text-white">
           {/* <FlipLink href="#">About Us</FlipLink> */}
           <FlipLink event={handlePayment}>Pricing</FlipLink>
-          <FlipLink event={handlePayment}>F&Q</FlipLink>
-          <FlipLink event={handlePayment}>Team</FlipLink>
-          <FlipLink event={handlePayment}>Contact</FlipLink>
+          <FlipLink event={handleFaQ}>F&Q</FlipLink>
+          <FlipLink event={handleTeam}>Team</FlipLink>
+          <FlipLink event={handleContact}>Contact</FlipLink>
         </div>
         
         <div className="grid place-content-center gap-10  px-8 py-24 text-black dark:text-white">
           <FlipLink href="#">Twitter</FlipLink>
           <FlipLink href="#">Linkedin</FlipLink>
-          {/* <FlipLink href="#">Facebook</FlipLink> */}
+          <FlipLink href="#">YouTube</FlipLink>
           <FlipLink href="#">Instagram</FlipLink>
         </div>
       </div>
