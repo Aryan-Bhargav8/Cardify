@@ -608,13 +608,13 @@ export default function Home() {
           <FlipLink href="#">F&Q</FlipLink>
           <FlipLink href="#">Team</FlipLink>
           <FlipLink href="#">Contact</FlipLink>
+         
         </div>
         
         <div className="grid place-content-center gap-6  px-8 py-24 text-black dark:text-white">
-          <FlipLink href="#">Twitter</FlipLink>
-          <FlipLink href="#">Linkedin</FlipLink>
-          <FlipLink href="#">Facebook</FlipLink>
-          <FlipLink href="#">Instagram</FlipLink>
+          <FlipLink href="https://www.linkedin.com/company/cardifyaii">Linkedin</FlipLink>
+          <FlipLink href="https://x.com/cardifyai">Twitter</FlipLink>
+          <FlipLink href="https://www.instagram.com/cardifyai/">Instagram</FlipLink>
         </div>
       </div>
 
