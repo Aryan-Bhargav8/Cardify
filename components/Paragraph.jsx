@@ -16,7 +16,7 @@ export default function Paragraph({paragraph}) {
   return (
     <motion.p 
       ref={container}         
-      className='flex text-lg font-semibold text-zinc-600 dark:text-white line-height-1 max-w-1280  flex-wrap'
+      className='flex text-xl font-semibold text-zinc-600 dark:text-white line-height-1 max-w-1280  flex-wrap'
       style={{opacity: scrollYProgress}}
     >
       {paragraph}

@@ -12,27 +12,28 @@ import Section from '@/components/Section';
 import Paragraph from '@/components/Paragraph';
 import Word from '@/components/Word';
 import Character from '@/components/Character';
+import Hero from '@/components/Hero';
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Link from "next/link";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+// import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
+// import HoverDevCards from '@/components/HoverDevCards';
 // import {projects} from '@/data';
 import Lenis from '@studio-freight/lenis';
 // import Card from '@/components/Card/index';
-import Example from '@/components/HorizontalScrollCarousel';
-import { useScroll } from 'framer-motion';
-import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+// import Example from '@/components/HorizontalScrollCarousel';
+import { useScroll, useTransform } from 'framer-motion';
 import GradientButton from '@/components/GradientButton';
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import AuroraHero from '@/components/AuroraHero';
+import FeatureCard from "@/components/FeatureCard";
+import FlipLink from '@/components/RevealLinks';
+import VelocityText from '@/components/VelocityText';
+import Header from '@/components/nav/Header';
 
-import {
-  IconBrandGithub,
-  IconBrandX,
-  IconExchange,
-  IconHome,
-  IconNewSection,
-  IconTerminal2,
-} from "@tabler/icons-react";
+import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook } from '@tabler/icons-react';//   IconDollarSign,
+
 import { Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { FiArrowRight } from "react-icons/fi";
@@ -43,33 +44,25 @@ import {
   animate,
 } from "framer-motion";
 
-const COLORS_TOP = ["#a855f7", "#8b5cf6", "#ec4899", "#DD335C"];
+
 const paragraph = "At Cardify, we believe that studying should be both effective and enjoyable. Our platform is designed to simplify the learning process, helping you retain information more efficiently through customizable flashcards and interactive tools."
 const paragraph1 = "Whether you're preparing for an exam, learning a new language, or mastering a new topic, Cardify provides the resources you need to succeed. With our user-friendly interface and diverse features, you can create, share, and study flashcards tailored to your learning style."
 const paragraph2 = "Join thousands of learners who have transformed their study habits with Cardify. Let's make learning easier, together!"
-const paragraph3 = "Unlock your full academic potential with Cardify! Our platform is designed to transform the way you study, making learning more effective and enjoyable. Whether you're preparing for exams or mastering new concepts, we have the tools to help you succeed."
-
+const paragraph3 = "Say goodbye to information overload! Our Document Summarization feature automatically condenses academic papers, PDFs, and other lengthy texts into concise summaries. Highlight the key points and essential information, making it easier for you to grasp complex subjects quickly."
+const paragraph4 = "In today’s fast-paced academic environment, simply studying hard isn’t enough. To truly excel, you must study smart. Here are some strategies to help you maximize your study potential and achieve your academic goals"
 
 
 
 export default function Home() {
   const [theme, setTheme] = useState('light');
 
-  const color = useMotionValue(COLORS_TOP[0]);
+  let ref = useRef(null);
+  let { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start']
+  });
+  let y = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
-  useEffect(() => {
-    animate(color, COLORS_TOP, {
-      ease: "easeInOut",
-      duration: 6,
-      repeat: Infinity,
-      repeatType: "mirror",
-    });
-  }, []);
-
-  const backgroundImage = useMotionTemplate`radial-gradient(150% 150% at 50% 0%, white 40%, ${color})`;  const border = useMotionTemplate`1px solid ${color}`;
-  const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
-
-  
   const placeholders = [
     "Put your YouTube link to start",
     "Put your PDF link to start",
@@ -77,10 +70,10 @@ export default function Home() {
   ];
 
   const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start start', 'end end']
-  })
+  // const { scrollYProgress } = useScroll({
+  //   target: container,
+  //   offset: ['start start', 'end end']
+  // })
 
   useEffect( () => {
     const lenis = new Lenis()
@@ -108,55 +101,49 @@ export default function Home() {
       ),
       href: "#",
     },
- 
     {
-      title: "Products",
+      title: "Pricing",
       icon: (
-        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconCurrencyDollar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },
     {
-      title: "Components",
+      title: "Chat",
       icon: (
-        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },
     {
-      title: "Aceternity UI",
+      title: "Contact",
       icon: (
-        <Image
-          src="https://assets.aceternity.com/logo-dark.png"
-          width={20}
-          height={20}
-          alt="Aceternity Logo"
-        />
+        <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },
     {
-      title: "Changelog",
+      title: "Video",
       icon: (
-        <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
- 
-    {
-      title: "Twitter",
-      icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },
     {
-      title: "GitHub",
+      title: "Document",
       icon: (
-        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },
+    {
+      title: "Flashcards",
+      icon: (
+        <IconBook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    
   ];
 
 
@@ -213,59 +200,72 @@ export default function Home() {
     const { currentMouseX, currentMouseY, containerWidth, containerHight} = getMousePosition(e)
   }
   
-
-
   return (
     <div className={`${theme}`}>
-      {/* <Navbar /> */}
+      
       <div className="flex items-center justify-center  w-full">
       <FloatingDock
-        mobileClassName="" // only for demo, remove for production
+        mobileClassName="" 
         items={links}
       />
     </div>
-
-    {/* <motion.section
-      style={{
-        backgroundImage,
-      }}
-      className="relative grid min-h-screen place-content-center overflow-hidden bg-white dark:bg-gray-950 px-4 py-24 text-gray-200"
-    >
-      <div className="relative z-10 flex flex-col items-center">
-      
-      <h3 className="max-w-5xl bg-gradient-to-br from-slate-950 to-slate-400 bg-clip-text text-center text-3xl font-medium leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight">
-      Transform your study sessions into a breeze with 
-      </h3>
-      <h1 className="text-5xl xl:text-7xl font-bold gradient-text animate-gradient mb-6">
-                Cardify
-      </h1> 
+    {/* <Hero /> */}
+    {/* <BackgroundGradientAnimation>
+      <div className="absolute z-50 inset-0 flex flex-col gap-8 items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl">
+        <h1 className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20">
+        Cardify
+        </h1>
+        <p className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20">
+        Study Smarter Not Harder
+        </p>
+        <PlaceholdersAndVanishInput
+        placeholders={placeholders}
+        onChange={handleChange}
+        onSubmit={onSubmit}
+      />
         
-        <motion.button
-          style={{
-            border,
-            boxShadow,
-          }}
-          whileHover={{
-            scale: 1.015,
-          }}
-          whileTap={{
-            scale: 0.985,
-          }}
-          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-gray-50 transition-colors hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500"
-        >
-          Get Started
-          <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
-        </motion.button>
       </div>
+      
+    </BackgroundGradientAnimation> */}
+  <Section theme='dark' setTheme={setTheme}>
+    
+    <AuroraHero />
+  {/* <motion.section
+    style={{
+      backgroundImage,
+    }}
+    className="relative grid min-h-screen place-content-center overflow-hidden bg-white dark:bg-gray-950 px-4 py-24 text-gray-200 rounded-3xl"
+  >
+    <header className="absolute top-0 left-0 right-0 flex justify-center p-4">
+      <img src="/assets/logo2.webp" alt="Logo" className="h-24 opacity" />
+    </header>
 
-      <div className="absolute inset-0 z-0">
-        <Canvas>
-          <Stars radius={50} count={2500} factor={4} fade speed={2} />
-        </Canvas>
-      </div>
-    </motion.section> */}
+    <div className="relative z-10 flex flex-col gap-6 items-center">
+      <h1 className="text-7xl xl:text-9xl font-bold gradient-text animate-gradient">
+        Cardify
+      </h1>
+      <h3 className="text-5xl xl:text-7xl font-bold text-neutral-50 ">
+        Study Smart Not Hard!
+      </h3>
 
-    <Section theme='light' setTheme={setTheme}>
+      <PlaceholdersAndVanishInput
+        placeholders={placeholders}
+        onChange={handleChange}
+        onSubmit={onSubmit}
+      />
+
+      
+    </div>
+
+    <div className="absolute inset-0 z-0">
+      <Canvas>
+        <Stars radius={50} count={2500} factor={4} fade speed={2} />
+      </Canvas>
+    </div>
+  </motion.section> */}
+</Section>
+
+    {/* <Section theme='light' setTheme={setTheme}>
       <BackgroundBeamsWithCollision>
     <div className="text-center z-20 relative">
       <h1 className="text-2xl md:text-4xl lg:text-7xl font-bold text-black dark:text-white font-sans tracking-tight">
@@ -279,13 +279,6 @@ export default function Home() {
           </div>
         </div>
       </h1>
-      {/* Add your paragraph or h3 here */}
-      {/* <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
-        Discover how Cardify can enhance your learning experience and help you retain information effortlessly.
-      </p>
-      <h3 className="mt-2 text-xl text-gray-800 dark:text-gray-200">
-        
-      </h3> */}
       <PlaceholdersAndVanishInput
         placeholders={placeholders}
         onChange={handleChange}
@@ -294,26 +287,28 @@ export default function Home() {
     </div>
   </BackgroundBeamsWithCollision>
 
-  {/* Other content can go here */}
-</Section>
+</Section> */}
+      
+      {/* About Section */}
       
       
+
       <Section theme='dark' setTheme={setTheme}>
         <div className="flex-1 flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8">
-            <div className="flex flex-col gap-8 justify-center">
-            <h2 className="text-5xl xl:text-7xl font-bold bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 bg-clip-text text-transparent">
+            <div className="flex flex-col gap-8 justify-center sm:items-center sm:m-8 lg:text-start sm:text-center ">
+            <h2 className="text-6xl xl:text-7xl font-bold gradient-text animate-gradient">
                 About Us
             </h2>              
               <Paragraph paragraph={paragraph}/>
               <Paragraph paragraph={paragraph1}/>
-              <Paragraph paragraph={paragraph2}/>
+              {/* <Paragraph paragraph={paragraph2}/> */}
         
             </div>
             <div className="">
               <div className="relative w-full h-[40rem]">
                 <Image 
-                  src='/assets/book.png' 
+                  src='/assets/undraw_notebook_re_id0r.svg' 
                   alt=''
                   fill 
                   style={{ objectFit: 'contain' }}
@@ -324,7 +319,34 @@ export default function Home() {
         </div>
       </Section>
 
-      <section className="relative w-full h-screen overflow-hidden">
+      <Section theme='dark' setTheme={setTheme}>
+        <VelocityText />
+      </Section>
+      <Section theme='dark' setTheme={setTheme}>
+        <div className="flex flex-col justify-center lg:max-w-5xl lg:mx-auto">
+          <div className="">
+          <h2 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient pb-12 text-center">
+          Learn Efficiently, Succeed Easily
+          </h2>
+            <div className="">
+              <div className="relative w-full h-[30rem]">
+                <Image 
+                  src='/assets/undraw_learning_re_32qv.svg' 
+                  alt=''
+                  fill 
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-8 justify-center pt-12 sm:items-center sm:m-8 lg:text-center sm:text-center ">        
+              <Paragraph paragraph={paragraph3}/>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* <section className="relative w-full h-screen overflow-hidden">
       <video
         autoPlay
         loop
@@ -334,25 +356,68 @@ export default function Home() {
         <source src="/assets/v1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className="absolute inset-0 bg-black opacity-40"></div>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative z-10 flex items-center justify-center h-full">
         <h3 className="text-white text-3xl md:text-5xl font-bold">
         Ace your exams in half the time you usually spend studying.
         </h3>
       </div>
-    </section>
+    </section> */}
+    <Section theme='dark' setTheme={setTheme}>
+      <div className="flex flex-col bg-black min-h-[170vh]">
 
-      <Section theme='dark' setTheme={setTheme}>
-        <div className="flex-1 flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8">
-            <div className="flex flex-col gap-8 justify-center">
-            <h2 className="text-5xl xl:text-7xl max-w-7xl font-bold gradient-text animate-gradient ">
+        <div className="relative w-full max-h-[40rem] h-screen" ref={ref}>
+          <div className="relative flex flex-col h-full z-10">
+            
+            <div className="flex-1 flex justify-center items-center">
+              <h1 className="text-white font-bold text-6xl text-center">
+              Ace your exams in half the time you usually spend studying.
+              </h1>
+            </div>
+          </div>
+          
+          <motion.div className="absolute top-0 left-0 right-0 bottom-0" style={{ y }}>
+            <video
+              className="w-full h-full object-cover opacity-50 "
+              loop
+              autoPlay
+              muted
+              playsInline
+            >
+              <source src="/assets/v1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-b from-transparent to-black" />
+          </motion.div>
+        </div>
+
+        <main className="max-w-[90%] md:max-w-[70%] mx-auto my-8 z-50">
+  <h1 className="text-white font-bold text-4xl md:text-6xl my-8 text-center">
+    Change your experience with our features
+  </h1>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16">
+    <FeatureCard feature="Document Summarization" desc="Automatically summarize academic papers and PDFs to highlight key points, making it easier for students to grasp essential information quickly." />
+    <FeatureCard feature="Video Summarization" desc="Analyze educational videos and provide concise summaries or key takeaways, allowing students to focus on important content without watching entire videos." />
+    <FeatureCard feature="Flashcard Creation" desc="Generate flashcards from summarized content, enabling students to study key concepts in a quick and efficient manner." />
+    <FeatureCard feature="User-Friendly Interface" desc="Ensure a clean, user-friendly interface that is not only visually appealing but also highly intuitive. This interface seamlessly supports multiple languages." />
+    <FeatureCard feature="Multi-Format Support" desc="Support various file formats, including PDFs, Word documents, and video links, for seamless integration of study materials." />
+    <FeatureCard feature="Quiz Generation" desc="Create quizzes based on the content of papers, PDFs, and videos, allowing students to test their knowledge and reinforce learning." />
+  </div>
+</main>
+      </div>
+    </Section>
+
+      <Section theme='light' setTheme={setTheme}>
+        <div className="flex-1 flex flex-col justify-center lg:max-w-7xl lg:mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 lg:p-4 md:p-20 sm:p-10">
+            <div className="flex flex-col gap-8 justify-center sm:text-center">
+            <h2 className="text-5xl xl:text-7xl max-w-7xl font-bold gradient-text animate-gradient text-center">
             Maximize Your Study Potential
             </h2>               
-            <Paragraph paragraph={paragraph3}/>
+            <Paragraph paragraph={paragraph4}/>
             </div>
             <div className="">
-              <div className="relative w-full h-[40rem]">
+              <div className="relative w-full md:h-[30rem] h-[40rem]">
                 <Image 
                   src='/assets/undraw_exams_re_4ios.svg' 
                   alt=''
@@ -367,7 +432,8 @@ export default function Home() {
 
       
 
-     
+      
+       
 
       {/* <Section theme='dark' setTheme={setTheme}>
       <div className="flex items-center justify-center h-screen">
@@ -375,7 +441,7 @@ export default function Home() {
       </div>
       </Section> */}
 
-      <Section theme='dark' setTheme={setTheme}>
+      {/* <Section theme='dark' setTheme={setTheme}>
       <h2 className="text-5xl xl:text-7xl font-bold gradient-text animate-gradient text-center">
                 Our Features
       </h2>
@@ -520,44 +586,52 @@ export default function Home() {
       </CardContainer>
   
       </div>
-      </Section>
+      </Section> */}
 
       {/* <Section theme='dark' setTheme={setTheme}>
       <Example />
       </Section> */}
 
+      {/* <div> */}
+        {/* <h1>Welcome to My Next.js App</h1> */}
+        {/* <Marquee text="Success isn't about working harder; it's about working smarter. Focus on understanding, not just memorizing, and let efficiency be your guide." />
+      </div> */}
       
-
-      <Section theme='light' setTheme={setTheme}>
-      <footer className="text-black dark:text-white py-6">
+      
+      <Section theme='dark' setTheme={setTheme}>
+      
+      
         
-      <div className="flex justify-between container mx-auto text-center">
-        <p className="mb-2">&copy; {new Date().getFullYear()} Cardify. All rights reserved.</p>
-        <nav className="mb-4">
-          <a href="/about" className="mx-2 hover:underline">About Us</a>
-          <a href="/contact" className="mx-2 hover:underline">Contact</a>
-          <a href="/privacy" className="mx-2 hover:underline">Privacy Policy</a>
-        </nav>
-        <div className="flex justify-center space-x-4">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faFacebook} className="text-xl hover:text-blue-600" />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faTwitter} className="text-xl hover:text-blue-400" />
-          </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faInstagram} className="text-xl hover:text-pink-600" />
-          </a>
+      <div className="flex flex-wrap  justify-between container mx-auto text-center">        
+        <div className="grid place-content-center gap-10 px-8 py-24 text-black dark:text-white">
+          <FlipLink href="#">About Us</FlipLink>
+          <FlipLink href="#">F&Q</FlipLink>
+          <FlipLink href="#">Team</FlipLink>
+          <FlipLink href="#">Contact</FlipLink>
+        </div>
+        
+        <div className="grid place-content-center gap-6  px-8 py-24 text-black dark:text-white">
+          <FlipLink href="#">Twitter</FlipLink>
+          <FlipLink href="#">Linkedin</FlipLink>
+          <FlipLink href="#">Facebook</FlipLink>
+          <FlipLink href="#">Instagram</FlipLink>
         </div>
       </div>
-    </footer>
+
+      <div className="">
+              <div className="relative w-full h-[10rem]">
+                <Image 
+                  src='/assets/logo.webp' 
+                  alt=''
+                  fill 
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+            </div>
+    <p className="mb-2 pt-20 text-center text-xl text-neutral-950 dark:text-neutral-50">&copy; {new Date().getFullYear()} Cardify. All rights reserved.</p>
       </Section>
             
-        
-
-      
-
-      
+  
     </div>
   );
 }
