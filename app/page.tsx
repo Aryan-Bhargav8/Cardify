@@ -49,7 +49,7 @@ const paragraph = "At Cardify, we believe that studying should be both effective
 const paragraph1 = "Whether you're preparing for an exam, learning a new language, or mastering a new topic, Cardify provides the resources you need to succeed. With our user-friendly interface and diverse features, you can create, share, and study flashcards tailored to your learning style."
 const paragraph2 = "Join thousands of learners who have transformed their study habits with Cardify. Let's make learning easier, together!"
 const paragraph3 = "Say goodbye to information overload! Our Document Summarization feature automatically condenses academic papers, PDFs, and other lengthy texts into concise summaries. Highlight the key points and essential information, making it easier for you to grasp complex subjects quickly."
-
+const paragraph4 = "In today’s fast-paced academic environment, simply studying hard isn’t enough. To truly excel, you must study smart. Here are some strategies to help you maximize your study potential and achieve your academic goals"
 
 
 
@@ -407,17 +407,17 @@ export default function Home() {
       </div>
     </Section>
 
-      <Section theme='dark' setTheme={setTheme}>
-        <div className="flex-1 flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8">
-            <div className="flex flex-col gap-8 justify-center">
+      <Section theme='light' setTheme={setTheme}>
+        <div className="flex-1 flex flex-col justify-center lg:max-w-7xl lg:mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 lg:p-4 md:p-20 sm:p-10">
+            <div className="flex flex-col gap-8 justify-center sm:text-center">
             <h2 className="text-5xl xl:text-7xl max-w-7xl font-bold gradient-text animate-gradient text-center">
             Maximize Your Study Potential
             </h2>               
-            <Paragraph paragraph={paragraph3}/>
+            <Paragraph paragraph={paragraph4}/>
             </div>
             <div className="">
-              <div className="relative w-full h-[40rem]">
+              <div className="relative w-full md:h-[30rem] h-[40rem]">
                 <Image 
                   src='/assets/undraw_exams_re_4ios.svg' 
                   alt=''
@@ -602,7 +602,7 @@ export default function Home() {
       
       
         
-      <div className="flex justify-between container mx-auto text-center">        
+      <div className="flex flex-wrap  justify-between container mx-auto text-center">        
         <div className="grid place-content-center gap-10 px-8 py-24 text-black dark:text-white">
           <FlipLink href="#">About Us</FlipLink>
           <FlipLink href="#">F&Q</FlipLink>
@@ -628,7 +628,7 @@ export default function Home() {
                 />
               </div>
             </div>
-    <p className="mb-2 lg:pt-20 text-center text-xl text-neutral-950 dark:text-neutral-50">&copy; {new Date().getFullYear()} Cardify. All rights reserved.</p>
+    <p className="mb-2 pt-20 text-center text-xl text-neutral-950 dark:text-neutral-50">&copy; {new Date().getFullYear()} Cardify. All rights reserved.</p>
       </Section>
             
   
