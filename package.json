@@ -12,6 +12,8 @@
     "@clerk/nextjs": "^5.3.7",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@google/generative-ai": "^0.17.1",
+    "@prisma/client": "^5.19.0",
     "@studio-freight/lenis": "^1.0.42",
     "@tabler/icons-react": "^3.14.0",
     "class-variance-authority": "^0.7.0",

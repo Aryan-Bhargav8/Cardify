@@ -9,9 +9,11 @@ generator client {
 }
 
 datasource db {
-  provider = mongodb
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+
 
 model User {
   id       String @id @default(uuid()) @map("_id")
@@ -24,7 +26,10 @@ model User {
   updatedAt DateTime @updatedAt
 
   Files             File[]
+  playlists         Playlist[]
 }
+
+
 model File {
   
   id String @id @default(uuid()) @map("_id")
@@ -33,4 +38,26 @@ model File {
 
   user   User   @relation(fields: [userId], references: [id])
   userId String
+}
+
+model Playlist{
+  
+  id String @id @default(uuid()) @map("_id")
+
+  addedAt DateTime @default(now())
+
+  Cards   Card[]
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+}
+
+model Card{
+  
+  id String @id @default(uuid()) @map("_id")
+
+  addedAt DateTime @default(now())
+
+  playlist  Playlist  @relation(fields: [playlistId], references: [id])
+  playlistId String
 }
