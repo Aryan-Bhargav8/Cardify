@@ -9,11 +9,9 @@ import {
   motion,
   animate,
 } from "framer-motion";
-import Header from '@/components/nav/Header';
 import Link from 'next/link';
 import GradientButton from '@/components/GradientButton';
 const COLORS_TOP = ["#a855f7", "#8b5cf6", "#ec4899", "#DD335C"];
-
 
 
 // export function PlaceholdersAndVanishInputDemo() {
@@ -22,7 +20,7 @@ const COLORS_TOP = ["#a855f7", "#8b5cf6", "#ec4899", "#DD335C"];
 //         "Put your PDF link to start",
 //         "Put your paper link to start",
 //       ];
-   
+
 //     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 //       console.log(e.target.value);
 //     };

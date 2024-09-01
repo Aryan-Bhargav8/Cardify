@@ -1,36 +1,18 @@
 'use client';
+
 import React, { useEffect, useState, useRef, MouseEventHandler } from 'react';
-import styles from '@/styles/page.module.css'
-import Navbar from '@/components/nav/navbar'
-import Head from 'next/head'; 
 import { ScrollTrigger } from 'gsap/all';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import gsap from 'gsap'
 import Image from "next/image";
 import Section from '@/components/Section';
 import Paragraph from '@/components/Paragraph';
-import Word from '@/components/Word';
-import Character from '@/components/Character';
-import Hero from '@/components/Hero';
 import { FloatingDock } from "@/components/ui/floating-dock";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import Link from "next/link";
-// import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
-// import HoverDevCards from '@/components/HoverDevCards';
-// import {projects} from '@/data';
 import Lenis from '@studio-freight/lenis';
-// import Card from '@/components/Card/index';
-// import Example from '@/components/HorizontalScrollCarousel';
 import { useScroll, useTransform } from 'framer-motion';
-import GradientButton from '@/components/GradientButton';
-import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import AuroraHero from '@/components/AuroraHero';
 import FeatureCard from "@/components/FeatureCard";
 import FlipLink from '@/components/RevealLinks';
 import VelocityText from '@/components/VelocityText';
-import Header from '@/components/nav/Header';
 
 import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook } from '@tabler/icons-react';//   IconDollarSign,
 import {
