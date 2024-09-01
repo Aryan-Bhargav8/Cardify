@@ -43,9 +43,9 @@ body.dark {
 .paragraph .word .shadow {
     position: absolute;
     opacity: 20%;
-  }
+}
 
-  .cardContainer {
+.cardContainer {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -54,7 +54,7 @@ body.dark {
     top: 0;
   }
   
-  .card {
+.card {
     display: flex;
     flex-direction: column;
     position: relative;

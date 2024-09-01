@@ -33,10 +33,9 @@ import VelocityText from '@/components/VelocityText';
 import Header from '@/components/nav/Header';
 
 import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook } from '@tabler/icons-react';//   IconDollarSign,
+import { useRouter } from 'next/navigation';
+import Footer from '@/components/Footer';
 
-import { Stars } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { FiArrowRight } from "react-icons/fi";
 import {
   useMotionTemplate,
   useMotionValue,
@@ -55,6 +54,10 @@ const paragraph4 = "In today’s fast-paced academic environment, simply studyin
 
 export default function Home() {
   const [theme, setTheme] = useState('light');
+  const router = useRouter();
+    const handlePayment = async () => {
+        router.push('/payment');
+    };
 
   let ref = useRef(null);
   let { scrollYProgress } = useScroll({
@@ -86,13 +89,7 @@ export default function Home() {
     requestAnimationFrame(raf)
   })
  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-  };
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("submitted");
-  };
+
   const links = [
     {
       title: "Home",
@@ -208,7 +205,7 @@ export default function Home() {
         mobileClassName="" 
         items={links}
       />
-    </div>
+      </div>
     {/* <Hero /> */}
     {/* <BackgroundGradientAnimation>
       <div className="absolute z-50 inset-0 flex flex-col gap-8 items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl">
@@ -392,9 +389,9 @@ export default function Home() {
         </div>
 
         <main className="max-w-[90%] md:max-w-[70%] mx-auto my-8 z-50">
-  <h1 className="text-white font-bold text-4xl md:text-6xl my-8 text-center">
-    Change your experience with our features
-  </h1>
+        <h1 className="text-white font-bold text-4xl md:text-6xl my-8 text-center">
+          Change your experience with our features
+        </h1>
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16">
     <FeatureCard feature="Document Summarization" desc="Automatically summarize academic papers and PDFs to highlight key points, making it easier for students to grasp essential information quickly." />
     <FeatureCard feature="Video Summarization" desc="Analyze educational videos and provide concise summaries or key takeaways, allowing students to focus on important content without watching entire videos." />
@@ -600,35 +597,7 @@ export default function Home() {
       
       <Section theme='dark' setTheme={setTheme}>
       
-      
-        
-      <div className="flex flex-wrap  justify-between container mx-auto text-center">        
-        <div className="grid place-content-center gap-10 px-8 py-24 text-black dark:text-white">
-          <FlipLink href="#">About Us</FlipLink>
-          <FlipLink href="#">F&Q</FlipLink>
-          <FlipLink href="#">Team</FlipLink>
-          <FlipLink href="#">Contact</FlipLink>
-        </div>
-        
-        <div className="grid place-content-center gap-6  px-8 py-24 text-black dark:text-white">
-          <FlipLink href="#">Twitter</FlipLink>
-          <FlipLink href="#">Linkedin</FlipLink>
-          <FlipLink href="#">Facebook</FlipLink>
-          <FlipLink href="#">Instagram</FlipLink>
-        </div>
-      </div>
-
-      <div className="">
-              <div className="relative w-full h-[10rem]">
-                <Image 
-                  src='/assets/logo.webp' 
-                  alt=''
-                  fill 
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
-            </div>
-    <p className="mb-2 pt-20 text-center text-xl text-neutral-950 dark:text-neutral-50">&copy; {new Date().getFullYear()} Cardify. All rights reserved.</p>
+          <Footer />
       </Section>
             
   
