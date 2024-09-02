@@ -12,13 +12,11 @@ import Paragraph from '@/components/Paragraph';
 import Image from "next/image";
 import GradientButton from '@/components/GradientButton';
 import Footer from '@/components/Footer';
+import Title from '@/components/Title';
+import ImageWithScrollEffect from '@/components/Image'
 
 
-const word = 'Welcome to the Cardify payment page! We’re committed to providing you with a seamless and secure transaction experience. Here’s everything you need to know to complete your purchase.';
 const paragraph = "Select the subscription plan that best suits your needs. Whether you’re a student looking for a single-user plan or an educator needing multiple accounts, we have options designed for everyone.";
-const paragraph2 = "To proceed with your purchase, please fill in your billing details. Ensure that all information is accurate to avoid any delays in processing your payment.";
-const paragraph3 = "We value your security and privacy. All transactions are processed through a secure payment gateway, using industry-standard encryption to protect your sensitive information.";
-
 
 
 export default function PaymentPage() {
@@ -123,11 +121,6 @@ export default function PaymentPage() {
         },
         
       ];
-    const [payment, setPayment] = useState(0);
-    const handlePricing = (amount: number) => {
-    setPayment(amount);
-    };
-
 
   return (
     <div className={`${theme}`}>
@@ -143,48 +136,57 @@ export default function PaymentPage() {
         <div className='h-[20vh] '>
         <Header />
         </div>
-        <div className="flex flex-col justify-center lg:max-w-5xl lg:mx-auto">
-            <div className="">
-            <h2 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient pb-12 text-center">
-            Secure Payment Page
-            </h2>
-            <div className="">
-              <div className="relative  sm:m-6 lg:w-full h-[30rem]">
-                <Image 
-                  src='/assets/undraw_credit_card_payments_re_qboh.svg' 
-                  alt=''
-                  fill 
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
+        <div className="flex-1 flex flex-col justify-center lg:max-w-7xl lg:mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 lg:p-4 md:p-20 sm:p-10">
+            <div className="flex flex-col gap-8 justify-center sm:text-center">              
+            <Title paragraph={'Meet Cardify Team'}/>
+            <Paragraph paragraph={"At Cardify, our team is our greatest asset. We are a diverse group of passionate individuals committed to excellence and innovation. Together, we strive to achieve our mission."}/>
             </div>
+            <ImageWithScrollEffect src={'/assets/undraw_engineering_team_a7n2.svg'} alt={'Engineering Team Illustration'} />
           </div>
         </div>
-        <div className='grid grid-col p-40 gap-14'>
-            <div className='sm:w-full lg:w-1/2 justify-start md:justify-center'>
-            <div className='sm:w-full lg:w-1/2  h-full'>
+        </Section>
+        
+        <Section theme='dark' setTheme={setTheme}>
+        <div className='grid grid-col p-40 gap-14 items-center'>
+            <div className='w-full justify-center'>
+            <div className='sm:w-full lg:w-1/2 h-full'>
+                <Title paragraph={"ARYAN BHARGAV"} />
+                <Paragraph paragraph={'Full-stack Developer'}/>
+                <ImageWithScrollEffect src={'/assets/G1.png'} alt={'ARYAN BHARGAV'} />
                 <Paragraph paragraph={paragraph}/>
             </div>
                 
             </div>
-            <div className='1/2 flex justify-center align-middle'>
+            <div className='w-full flex justify-center align-middle'>
                 
-                <div className='sm:w-full lg:w-1/4'>
-                <Paragraph paragraph={paragraph2}/>
+                <div className='sm:w-full lg:w-1/2'>
+                <Title paragraph={"shatha dalhoumy"} />
+                <Paragraph paragraph={'BackEnd Developer'}/>
+                <ImageWithScrollEffect src={'/assets/G2.png'} alt={'shatha dalhoumy'} />
+                <Paragraph paragraph={paragraph}/>
                 </div>
             </div>
-            <div className='1/2 flex justify-end'>
+            <div className='w-full flex justify-end'>
+                <div className='sm:w-full lg:w-1/2'>
                 
-                <div className='sm:w-full lg:w-1/4'>
-                <Paragraph paragraph={paragraph3}/>
+                <Title paragraph={"Abdulrahman Mohammed"} />
+                <Paragraph paragraph={'Full-stack Developer'}/>
+                <ImageWithScrollEffect src={'/assets/G4.png'} alt={'Abdulrahman Mohammed'} />
+                <Paragraph paragraph={paragraph}/>
+                </div>
+            </div>
+            <div className='w-full flex justify-center'>
+                <div className='sm:w-full lg:w-1/2'>
+                
+                <Title paragraph={"Hibah Sindi"} />
+                <Paragraph paragraph={'Data Science / FrontEnd Developer'}/>
+                <ImageWithScrollEffect src={'/assets/G3.png'} alt={'Hibah Sindi'} />
+                <Paragraph paragraph={paragraph}/>
                 </div>
             </div>
             
         </div>
-        
-      </Section>
-        <Section theme='dark' setTheme={setTheme}>
-          <div></div>
         </Section>
         <Section theme='dark' setTheme={setTheme}>
             <Footer />

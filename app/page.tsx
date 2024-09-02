@@ -35,6 +35,7 @@ import Header from '@/components/nav/Header';
 import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook } from '@tabler/icons-react';//   IconDollarSign,
 import { useRouter } from 'next/navigation';
 import Footer from '@/components/Footer';
+import Title from '@/components/Title'
 
 import {
   useMotionTemplate,
@@ -294,9 +295,7 @@ export default function Home() {
         <div className="flex-1 flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8">
             <div className="flex flex-col gap-8 justify-center sm:items-center sm:m-8 lg:text-start sm:text-center ">
-            <h2 className="text-6xl xl:text-7xl font-bold gradient-text animate-gradient">
-                About Us
-            </h2>              
+              <Title paragraph={'About Us'}/>
               <Paragraph paragraph={paragraph}/>
               <Paragraph paragraph={paragraph1}/>
               {/* <Paragraph paragraph={paragraph2}/> */}
@@ -320,11 +319,9 @@ export default function Home() {
         <VelocityText />
       </Section>
       <Section theme='dark' setTheme={setTheme}>
-        <div className="flex flex-col justify-center lg:max-w-5xl lg:mx-auto">
+        <div className="bg-black flex flex-col justify-center lg:max-w-5xl lg:mx-auto">
           <div className="">
-          <h2 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient pb-12 text-center">
-          Learn Efficiently, Succeed Easily
-          </h2>
+          <Title paragraph={'Learn Efficiently, Succeed Easily'}/>
             <div className="">
               <div className="relative w-full h-[30rem]">
                 <Image 
@@ -407,10 +404,8 @@ export default function Home() {
       <Section theme='light' setTheme={setTheme}>
         <div className="flex-1 flex flex-col justify-center lg:max-w-7xl lg:mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 lg:p-4 md:p-20 sm:p-10">
-            <div className="flex flex-col gap-8 justify-center sm:text-center">
-            <h2 className="text-5xl xl:text-7xl max-w-7xl font-bold gradient-text animate-gradient text-center">
-            Maximize Your Study Potential
-            </h2>               
+            <div className="flex flex-col gap-8 justify-center sm:text-center">              
+            <Title paragraph={'Maximize Your Study Potential'}/>
             <Paragraph paragraph={paragraph4}/>
             </div>
             <div className="">
