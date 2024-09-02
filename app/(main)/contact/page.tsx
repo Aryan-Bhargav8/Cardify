@@ -16,10 +16,9 @@ import { SiTiktok, SiYoutube, SiX, SiLinkedin, SiInstagram } from "react-icons/s
 import { motion } from "framer-motion";
 
 
-const word = 'Welcome to the Cardify payment page! We’re committed to providing you with a seamless and secure transaction experience. Here’s everything you need to know to complete your purchase.';
-const paragraph = "  We’d love to hear from you! Fill out the form below or reach out through our social media channels.";
-const paragraph2 = "To proceed with your purchase, please fill in your billing details. Ensure that all information is accurate to avoid any delays in processing your payment.";
-const paragraph3 = "We value your security and privacy. All transactions are processed through a secure payment gateway, using industry-standard encryption to protect your sensitive information.";
+const paragraph = "We’re here to support you on your journey to studying smart, not hard! Whether you have questions about our services, need assistance with using our quizzes and flashcards, or want to share your feedback, we’d love to hear from you.";
+const paragraph2 = "Our dedicated team is committed to providing you with the best tools and resources to enhance your learning experience. Please feel free to reach out to us using the form below or through our contact information provided.";
+const paragraph3 = "Your success is our priority, and we’re eager to help you achieve your academic goals!";
 
 const Block = ({ className, ...rest }) => {
   return (
@@ -231,21 +230,6 @@ const EmailListBlock = () => (
   </Block>
 );
 
-
-
-const Footer2 = () => {
-  return (
-    <footer className="mt-12">
-      <p className="text-center text-zinc-400">
-        Made with ❤️ by{" "}
-        <a href="#" className="text-red-300 hover:underline">
-          @tomisloading
-        </a>
-      </p>
-    </footer>
-  );
-};
-
 export default function PaymentPage() {
     const [theme, setTheme] = useState('light');
     const firstText = useRef(null);
@@ -368,25 +352,47 @@ export default function PaymentPage() {
         <div className='h-[20vh] '>
         <Header />
         </div>
-        <div className="flex flex-col justify-center lg:max-full lg:mx-auto">
-            
+        <div className="flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
             <h2 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient pb-12 text-center">
-              Contact Us
+             Contact Us
             </h2>
             <div className="">
-              <div className="relative sm:m-6 lg:w-full h-[15rem]">
+              <div className="relative sm:m-6 lg:w-full h-[20rem]">
                 <Image 
-                  src='/assets/undraw_fill_form_re_cwyf.svg' 
+                  src='/assets/undraw_voting_nvu7.svg' 
                   alt=''
                   fill 
                   style={{ objectFit: 'contain' }}
                 />
               </div>
             </div>
+          </div>
+          <div className='grid grid-col p-40 gap-14'>
+              <div className='sm:w-full lg:w-1/2 justify-start md:justify-center'>
+              <div className='sm:w-full lg:w-1/2  h-full'>
+                  <Paragraph paragraph={paragraph}/>
+              </div>
+                  
+              </div>
+              <div className='1/2 flex justify-center align-middle'>
+                  
+                  <div className='sm:w-full lg:w-1/4'>
+                  <Paragraph paragraph={paragraph2}/>
+                  </div>
+              </div>
+              <div className='1/2 flex justify-end'>
+                  
+                  <div className='sm:w-full lg:w-1/4'>
+                  <Paragraph paragraph={paragraph3}/>
+                  </div>
+              </div>
+              
+          </div>
 
-          
-        </div>
-
+      
+      </Section>
+      
+      <Section theme='dark' setTheme={setTheme}>
       <div className="min-h-screen p-20 text-zinc-50">
       
       <motion.div
@@ -406,8 +412,7 @@ export default function PaymentPage() {
       </motion.div>
     </div>
       </Section>
-      
-        <Section theme='dark' setTheme={setTheme}>
+      <Section theme='dark' setTheme={setTheme}>
             <Footer />
       </Section>
     </div>

@@ -174,15 +174,15 @@ export default function PaymentPage() {
         </div>
         
         <Section theme='dark' setTheme={setTheme}>
-        <div className='h-[20vh] '>
-        <Header />
-        </div>
-        <div className="flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
+          <div className='h-[20vh] '>
+          <Header />
+          </div>
+          <div className="flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
             <h2 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient pb-12 text-center">
              F&Q Page
             </h2>
             <div className="">
-              <div className="relative sm:m-6 lg:w-full h-[30rem]">
+              <div className="sm:m-6 lg:w-full h-[30rem]">
                 <Image 
                   src='/assets/undraw_faq_re_31cw.svg' 
                   alt=''
@@ -191,28 +191,28 @@ export default function PaymentPage() {
                 />
               </div>
             </div>
-        </div>
-        <div className='grid grid-col p-40 gap-14'>
-            <div className='sm:w-full lg:w-1/2 justify-start md:justify-center'>
-            <div className='sm:w-full lg:w-1/2  h-full'>
-                <Paragraph paragraph={paragraph}/>
-            </div>
-                
-            </div>
-            <div className='1/2 flex justify-center align-middle'>
-                
-                <div className='sm:w-full lg:w-1/4'>
-                <Paragraph paragraph={paragraph2}/>
-                </div>
-            </div>
-            <div className='1/2 flex justify-end'>
-                
-                <div className='sm:w-full lg:w-1/4'>
-                <Paragraph paragraph={paragraph3}/>
-                </div>
-            </div>
-            
-        </div>
+          </div>
+          <div className='grid grid-col p-40 gap-14'>
+              <div className='sm:w-full lg:w-1/2 justify-start md:justify-center'>
+              <div className='sm:w-full lg:w-1/2  h-full'>
+                  <Paragraph paragraph={paragraph}/>
+              </div>
+                  
+              </div>
+              <div className='1/2 flex justify-center align-middle'>
+                  
+                  <div className='sm:w-full lg:w-1/4'>
+                  <Paragraph paragraph={paragraph2}/>
+                  </div>
+              </div>
+              <div className='1/2 flex justify-end'>
+                  
+                  <div className='sm:w-full lg:w-1/4'>
+                  <Paragraph paragraph={paragraph3}/>
+                  </div>
+              </div>
+              
+          </div>
         
       </Section>
         <Section theme='dark' setTheme={setTheme}>
