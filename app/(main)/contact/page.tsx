@@ -353,6 +353,7 @@ export default function PaymentPage() {
         <Header />
         </div>
         <div className="flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
+          <div>
             <h2 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient pb-12 text-center">
              Contact Us
             </h2>
@@ -366,29 +367,30 @@ export default function PaymentPage() {
                 />
               </div>
             </div>
-          </div>
-          <div className='grid grid-col p-40 gap-14'>
-              <div className='sm:w-full lg:w-1/2 justify-start md:justify-center'>
+            </div>
+          
+          <div className='grid grid-col p-10 gap-20'>
+              <div className='w-full justify-start md:justify-center'>
               <div className='sm:w-full lg:w-1/2  h-full'>
                   <Paragraph paragraph={paragraph}/>
               </div>
                   
               </div>
-              <div className='1/2 flex justify-center align-middle'>
+              <div className='w-full flex justify-center align-middle'>
                   
-                  <div className='sm:w-full lg:w-1/4'>
+                  <div className='sm:w-full lg:w-1/2'>
                   <Paragraph paragraph={paragraph2}/>
                   </div>
               </div>
-              <div className='1/2 flex justify-end'>
+              <div className='w-full flex justify-end'>
                   
-                  <div className='sm:w-full lg:w-1/4'>
+                  <div className='sm:w-full lg:w-1/2'>
                   <Paragraph paragraph={paragraph3}/>
                   </div>
               </div>
               
           </div>
-
+          </div>
       
       </Section>
       
