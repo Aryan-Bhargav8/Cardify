@@ -135,23 +135,77 @@ const SocialsBlock = () => (
   </>
 );
 
-// const AboutBlock = () => (
-//   <Block className="col-span-12 text-3xl leading-snug">
-//     <p>
-//       My passion is building cool stuff.{" "}
-//       <span className="text-zinc-400">
-//         I build primarily with React, Tailwind CSS, and Framer Motion. I love
-//         this stack so much that I even built a website about it. I've made over
-//         a hundred videos on the subject across YouTube and TikTok.
-//       </span>
-//     </p>
-//   </Block>
-// );
+
+const AboutBlock = () => (
+  <Block className="col-span-12 text-3xl leading-snug p-6">
+    <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
+    <p className="mb-4">
+      We’d love to hear from you! Please fill out the form below, and our team will get back to you as soon as possible.
+    </p>
+    
+    <form className="p-8 rounded-lg shadow-md">
+      <div className="mb-4">
+        <label className="block text-gray-700 dark:text-purple-300 text-md  mb-2" htmlFor="name">
+          Name
+        </label>
+        <input
+          className="shadow  appearance-none border-2 bg-black border-neutral-400 rounded w-full py-2 px-3 text-gray-700 dark:text-neutral-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="name"
+          type="text"
+          placeholder="Your Name"
+          required
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700 dark:text-purple-300 text-md  mb-2" htmlFor="email">
+          Email
+        </label>
+        <input
+          className="shadow appearance-none border-2 bg-black border-neutral-400 rounded w-full py-2 px-3 text-gray-700 dark:text-neutral-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="email"
+          type="email"
+          placeholder="Your Email"
+          required
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700 dark:text-purple-300 text-md  mb-2" htmlFor="message">
+          Message
+        </label>
+        <textarea
+          className="shadow appearance-none border-2 bg-black border-neutral-400 rounded  w-full py-2 px-3 text-gray-700 dark:text-neutral-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="message"
+          rows="4"
+          placeholder="Your Message"
+          required
+        ></textarea>
+      </div>
+
+      <div className="flex items-center justify-between">
+        <button
+          className="bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Send Message
+        </button>
+      </div>
+    </form>
+  </Block>
+);
+
+
+const TextBlock = () => (
+  <Block className="col-span-12 text-3xl leading-snug">
+    <Paragraph paragraph={paragraph}/>
+  </Block>
+);
 
 const LocationBlock = () => (
   <Block className="col-span-12 flex flex-col items-center gap-4 md:col-span-3">
     <FiMapPin className="text-3xl" />
-    <p className="text-center text-lg text-zinc-400">Cyberspace</p>
+    <p className="text-center text-lg text-zinc-400">WorldWide</p>
   </Block>
 );
 
@@ -165,7 +219,7 @@ const EmailListBlock = () => (
       <input
         type="email"
         placeholder="Enter your email"
-        className="w-full rounded border border-zinc-700 bg-zinc-800 px-3 py-1.5 transition-colors focus:border-red-300 focus:outline-0"
+        className="w-full rounded border border-zinc-700 bg-zinc-800 px-3 py-1.5 transition-colors focus:border-purple-300 focus:outline-0"
       />
       <button
         type="submit"
@@ -314,26 +368,23 @@ export default function PaymentPage() {
         <div className='h-[20vh] '>
         <Header />
         </div>
-        <div className="flex flex-col justify-center lg:max-w-5xl lg:mx-auto">
-            <div className="">
+        <div className="flex flex-col justify-center lg:max-full lg:mx-auto">
+            
             <h2 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient pb-12 text-center">
               Contact Us
             </h2>
             <div className="">
-              <div className="relative  sm:m-6 lg:w-full h-[30rem]">
+              <div className="relative sm:m-6 lg:w-full h-[15rem]">
                 <Image 
-                  src='/assets/undraw_online_transactions_-02-ka.svg' 
+                  src='/assets/undraw_fill_form_re_cwyf.svg' 
                   alt=''
                   fill 
                   style={{ objectFit: 'contain' }}
                 />
               </div>
             </div>
-            <div className='w-1/2  py-8 align-middle'>
-            <Paragraph paragraph={paragraph}/>
-            </div>
-            
-          </div>
+
+          
         </div>
 
       <div className="min-h-screen p-20 text-zinc-50">
@@ -346,17 +397,16 @@ export default function PaymentPage() {
         }}
         className="mx-auto grid max-w-4xl grid-flow-dense grid-cols-12 gap-4"
       >
+        <TextBlock />
         <HeaderBlock />
         <SocialsBlock />
-        {/* <AboutBlock /> */}
+        <AboutBlock />
         <LocationBlock />
         <EmailListBlock />
       </motion.div>
     </div>
       </Section>
-        {/* <Section theme='dark' setTheme={setTheme}>
       
-        </Section> */}
         <Section theme='dark' setTheme={setTheme}>
             <Footer />
       </Section>

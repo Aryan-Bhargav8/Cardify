@@ -48,7 +48,14 @@ const Footer = () => {
                 />
               </div>
             </div>
-        <p className="mb-2 pt-20 text-center text-xl text-neutral-950 dark:text-neutral-50">&copy; {new Date().getFullYear()} Cardify. All rights reserved.</p>
+            <div className='flex flex-wrap  justify-between container mx-auto text-center'>
+              <p className="mb-2 pt-20 text-center text-xl text-neutral-950 dark:text-neutral-50">
+                Made with ❤️ by Cardify Team
+            
+              </p>
+              <p className="mb-2 pt-20 text-center text-xl text-neutral-950 dark:text-neutral-50">&copy; {new Date().getFullYear()} Cardify. All rights reserved.</p>
+            </div>
+        
     </section>
   );
 };
