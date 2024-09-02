@@ -25,46 +25,50 @@ const pricingPlans = [
     id: 1,
     name: 'Free Plan',
     price: '0',
-    bestFor: 'Best for 1-5 users',
+    bestFor: '',
     features: [
-      { text: 'One workspace', available: true },
+      { text: '1 quiz per day', available: true },
+      { text: '5 flashcards per day', available: true },
+      { text: '1 video per day', available: true },
+      { text: '1 Document summarization', available: true },
       { text: 'Email support', available: true },
-      { text: '1 day data retention', available: false },
-      { text: 'Custom roles', available: false },
-      { text: 'Priority support', available: false },
-      { text: 'SSO', available: false },
+      { text: 'Community access', available: true },
+      { text: 'Limited analytics tools', available: true },
     ],
     buttonText: 'Get started free',
   },
   {
     id: 2,
     name: 'Pro Plan',
-    price: '79',
-    bestFor: 'Best for 5-50 users',
+    price: '15',
+    bestFor: '',
     features: [
-      { text: 'Five workspaces', available: true },
-      { text: 'Email support', available: true },
-      { text: '7 day data retention', available: true },
-      { text: 'Custom roles', available: true },
-      { text: 'Priority support', available: true },
-      { text: 'SSO', available: false },
+      { text: 'Unlimited quizzes creation', available: true },
+      { text: 'Unlimited flashcards creation', available: true },
+      { text: 'Unlimited document summarization', available: true },
+      { text: 'Unlimited Video summarization', available: true },
+      { text: 'Custom study plans', available: true },
+      { text: 'Email support with priority response', available: true },
+      { text: 'Access to exclusive content', available: true },
     ],
-    buttonText: '14-day free trial',
+    buttonText: 'Start Now',
   },
   {
     id: 3,
     name: 'Basic Plan',
-    price: 'Contact us',
-    bestFor: 'Best for 50+ users',
+    price: '9',
+    bestFor: '',
     features: [
-      { text: 'Unlimited workspaces', available: true },
-      { text: 'Email support', available: true },
-      { text: '30 day data retention', available: true },
-      { text: 'Custom roles', available: true },
-      { text: 'Priority support', available: true },
-      { text: 'SSO', available: true },
+      { text: '10 flashcards per day', available: true },
+      { text: '5 video per day', available: true },
+      { text: '5 Document summarization per day', available: true },
+      { text: '5 quizes per day', available: true },
+      { text: 'Customizable assessments', available: true },
+      { text: 'Dedicated account manager', available: true },
+      { text: 'Analytics and reporting tools', available: true },
+      
     ],
-    buttonText: 'Contact us',
+    buttonText: 'Start Now',
   },
 ];
 
@@ -247,14 +251,14 @@ export default function PaymentPage() {
             </div>
       <div className=" max-w-6xl lg:mx-auto sm:mx-10 grid grid-cols-1 md:grid-cols-3 gap-10 ">
         {pricingPlans.map((plan) => (
-          <div key={plan.id} className="border-2 border-neutral-500 rounded-lg p-6 text-center">
+          <div key={plan.id} className="border-2 border-neutral-500 rounded-lg p-6 ">
             <h2 className="text-xl  mb-4 text-neutral-300">{plan.name}</h2>
             <p className="text-3xl mb-2 font-bold gradient-text animate-gradient">${plan.price}/mo</p>
             <p className="mb-4">{plan.bestFor}</p>
-            <hr className='border-neutral-200 mb-4 mx-8' />
-            <ul className="mb-6">
+            <hr className='border-neutral-200 mb-4 ' />
+            <ul className="mb-8">
               {plan.features.map((feature, index) => (
-                <li key={index} className="flex items-center justify-center mb-2">
+                <li key={index} className="flex items-center  mb-4">
                   {feature.available ? (
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +279,7 @@ export default function PaymentPage() {
                 </li>
               ))}
             </ul>
-            <div className="flex justify-center mb-4 mt-20">
+            <div className="flex justify-start mb-4 mt-20">
             <GradientButton text={plan.buttonText} href="https://youtube.com" />
             </div>
             {/* <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
