@@ -13,10 +13,8 @@ import Image from "next/image";
 import GradientButton from '@/components/GradientButton';
 import Footer from '@/components/Footer';
 import Title from '@/components/Title';
-import ImageWithScrollEffect from '@/components/Image'
-
-
-const paragraph = "Select the subscription plan that best suits your needs. Whether you’re a student looking for a single-user plan or an educator needing multiple accounts, we have options designed for everyone.";
+import ImageWithScrollEffect from '@/components/Image';
+import { quizzes } from '@/data/quizzes';
 
 
 export default function PaymentPage() {
@@ -121,6 +119,18 @@ export default function PaymentPage() {
         },
         
       ];
+    const [history, setHistory] = useState([]);
+    const router = useRouter();
+    
+    useEffect(() => {
+        // Fetch quiz history from local storage or a database
+        const storedHistory = JSON.parse(localStorage.getItem('quizHistory')) || [];
+        setHistory(storedHistory);
+      }, []);
+    
+      const handleBack = () => {
+        router.push('/quizzes'); // Redirect back to the quiz page
+      };
 
   return (
     <div className={`${theme}`}>
@@ -139,54 +149,39 @@ export default function PaymentPage() {
         <div className="flex-1 flex flex-col justify-center lg:max-w-7xl lg:mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 lg:p-4 md:p-20 sm:p-10">
             <div className="flex flex-col gap-8 justify-center sm:text-center">              
-            <Title paragraph={'Meet Cardify Team'}/>
-            <Paragraph paragraph={"At Cardify, our team is our greatest asset. We are a diverse group of passionate individuals committed to excellence and innovation. Together, we strive to achieve our mission."}/>
+            <Title paragraph={'Quizzes History Page'}/>
+            <Paragraph paragraph={""}/>
             </div>
-            <ImageWithScrollEffect src={'/assets/undraw_engineering_team_a7n2.svg'} alt={'Engineering Team Illustration'} />
+            <ImageWithScrollEffect src={'/assets/undraw_quiz_re_aol4.svg'} alt={'Engineering Team Illustration'} />
           </div>
         </div>
         </Section>
         
         <Section theme='dark' setTheme={setTheme}>
-        <div className='grid grid-col p-40 gap-14 items-center'>
-            <div className='w-full justify-center'>
-            <div className='sm:w-full lg:w-1/2 h-full'>
-                <Title paragraph={"ARYAN BHARGAV"} />
-                <Paragraph paragraph={'Full-stack Developer'}/>
-                <ImageWithScrollEffect src={'/assets/G1.png'} alt={'ARYAN BHARGAV'} />
-                <Paragraph paragraph={paragraph}/>
-            </div>
-                
-            </div>
-            <div className='w-full flex justify-center align-middle'>
-                
-                <div className='sm:w-full lg:w-1/2'>
-                <Title paragraph={"shatha dalhoumy"} />
-                <Paragraph paragraph={'BackEnd Developer'}/>
-                <ImageWithScrollEffect src={'/assets/G2.png'} alt={'shatha dalhoumy'} />
-                <Paragraph paragraph={paragraph}/>
-                </div>
-            </div>
-            <div className='w-full flex justify-end'>
-                <div className='sm:w-full lg:w-1/2'>
-                
-                <Title paragraph={"Abdulrahman Mohammed"} />
-                <Paragraph paragraph={'Full-stack Developer'}/>
-                <ImageWithScrollEffect src={'/assets/G4.png'} alt={'Abdulrahman Mohammed'} />
-                <Paragraph paragraph={paragraph}/>
-                </div>
-            </div>
-            <div className='w-full flex justify-center'>
-                <div className='sm:w-full lg:w-1/2'>
-                
-                <Title paragraph={"Hibah Sindi"} />
-                <Paragraph paragraph={'Data Science / FrontEnd Developer'}/>
-                <ImageWithScrollEffect src={'/assets/G3.png'} alt={'Hibah Sindi'} />
-                <Paragraph paragraph={paragraph}/>
-                </div>
-            </div>
-            
-        </div>
+        <div className="container mx-auto p-10 border border-neutral-500 text-white rounded">
+        <Title paragraph={'Quizzes History'}/>
+      {history.length === 0 ? (
+        <p>No quiz history found.</p>
+      ) : (
+        <ul className="space-y-4">
+          {history.map((entry, index) => (
+            <li key={index} className="p-4 bg-gray-700 rounded shadow-md">
+              <h2 className="font-semibold">{entry.title}</h2>
+              <p>
+                Score: {entry.score} out of {entry.totalQuestions}
+              </p>
+              <p>Date: {new Date(entry.date).toLocaleDateString()}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      <button
+        className="mt-6 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 transition duration-200"
+        onClick={handleBack}
+      >
+        Back to Quizzes
+      </button>
+    </div>
         </Section>
         <Section theme='dark' setTheme={setTheme}>
             <Footer />
