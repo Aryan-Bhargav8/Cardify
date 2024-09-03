@@ -318,6 +318,7 @@ export default function Home() {
       <Section theme='dark' setTheme={setTheme}>
         <VelocityText />
       </Section>
+      
       <Section theme='dark' setTheme={setTheme}>
         <div className="bg-black flex flex-col justify-center lg:max-w-5xl lg:mx-auto">
           <div className="">
