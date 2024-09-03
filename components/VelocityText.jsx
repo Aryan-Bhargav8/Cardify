@@ -32,7 +32,7 @@ export const VelocityText = () => {
     return (
       <section
         ref={targetRef}
-        className="h-[100vh]  text-neutral-950 dark:text-neutral-50"
+        className="h-[100vh] bg-white dark:bg-black   text-neutral-950 dark:text-neutral-50"
       >
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.p
