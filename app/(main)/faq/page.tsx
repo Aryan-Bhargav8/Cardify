@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import Section from '@/components/Section';
 import React, { useEffect, useState, useRef } from 'react';
-import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook } from '@tabler/icons-react';//   IconDollarSign,
+import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook, IconClipboard } from '@tabler/icons-react';//   IconDollarSign,
 import { ScrollTrigger } from 'gsap/all';
 import Header from '@/components/nav/Header';
 import { FloatingDock } from "@/components/ui/floating-dock";
@@ -70,57 +70,63 @@ export default function PaymentPage() {
     let xPercent = 0;
     let direction = -1;
     const links = [
-        {
-          title: "Home",
-          icon: (
-            <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
-        {
-          title: "Pricing",
-          icon: (
-            <IconCurrencyDollar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
-        {
-          title: "Chat",
-          icon: (
-            <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
-        {
-          title: "Contact",
-          icon: (
-            <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
-        {
-          title: "Video",
-          icon: (
-            <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
-        {
-          title: "Document",
-          icon: (
-            <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
-        {
-          title: "Flashcards",
-          icon: (
-            <IconBook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
-        
-      ];
+      {
+        title: "Home",
+        icon: (
+          <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        ),
+        href: "/",
+      },
+      {
+        title: "Pricing",
+        icon: (
+          <IconCurrencyDollar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        ),
+        href: "/payment",
+      },
+      {
+        title: "Chat",
+        icon: (
+          <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        ),
+        href: "#",
+      },
+      {
+        title: "Contact",
+        icon: (
+          <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        ),
+        href: "/contact",
+      },
+      {
+        title: "Video",
+        icon: (
+          <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        ),
+        href: "#",
+      },
+      {
+        title: "Document",
+        icon: (
+          <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        ),
+        href: "#",
+      },
+      {
+        title: "Flashcards",
+        icon: (
+          <IconBook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        ),
+        href: "#",
+      },
+      {
+        title: "Quizzes", // New entry for quizzes
+        icon: (
+          <IconClipboard className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        ),
+        href: "/quizzes", 
+      },
+    ];
     
       const [activeIndex, setActiveIndex] = useState(null);
 

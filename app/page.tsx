@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState, useRef, MouseEventHandler } from 'react';
 import styles from '@/styles/page.module.css'
-import Navbar from '@/components/nav/navbar'
 import Head from 'next/head'; 
 import { ScrollTrigger } from 'gsap/all';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,7 +13,6 @@ import Word from '@/components/Word';
 import Character from '@/components/Character';
 import Hero from '@/components/Hero';
 import { FloatingDock } from "@/components/ui/floating-dock";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Link from "next/link";
 // import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
@@ -25,14 +23,13 @@ import Lenis from '@studio-freight/lenis';
 // import Example from '@/components/HorizontalScrollCarousel';
 import { useScroll, useTransform } from 'framer-motion';
 import GradientButton from '@/components/GradientButton';
-import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import AuroraHero from '@/components/AuroraHero';
 import FeatureCard from "@/components/FeatureCard";
 import FlipLink from '@/components/RevealLinks';
 import VelocityText from '@/components/VelocityText';
 import Header from '@/components/nav/Header';
 
-import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook } from '@tabler/icons-react';//   IconDollarSign,
+import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook, IconClipboard } from '@tabler/icons-react';//   IconDollarSign,
 import { useRouter } from 'next/navigation';
 import Footer from '@/components/Footer';
 import Title from '@/components/Title'
@@ -78,6 +75,9 @@ export default function Home() {
   //   target: container,
   //   offset: ['start start', 'end end']
   // })
+  const handleQuizzes = async () => {
+    router.push('/quizzes');
+};
 
   useEffect( () => {
     const lenis = new Lenis()
@@ -97,14 +97,14 @@ export default function Home() {
       icon: (
         <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/",
     },
     {
       title: "Pricing",
       icon: (
         <IconCurrencyDollar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/payment",
     },
     {
       title: "Chat",
@@ -118,7 +118,7 @@ export default function Home() {
       icon: (
         <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/contact",
     },
     {
       title: "Video",
@@ -141,7 +141,13 @@ export default function Home() {
       ),
       href: "#",
     },
-    
+    {
+      title: "Quizzes", // New entry for quizzes
+      icon: (
+        <IconClipboard className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "/quizzes", 
+    },
   ];
 
 
