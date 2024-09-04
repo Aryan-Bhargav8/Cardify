@@ -16,7 +16,6 @@ import Title from '@/components/Title';
 import ImageWithScrollEffect from '@/components/Image'
 
 
-const paragraph = "Select the subscription plan that best suits your needs. Whether you’re a student looking for a single-user plan or an educator needing multiple accounts, we have options designed for everyone.";
 
 
 export default function PaymentPage() {
@@ -160,7 +159,7 @@ export default function PaymentPage() {
                 <Title paragraph={"ARYAN BHARGAV"} />
                 <Paragraph paragraph={'Full-stack Developer'}/>
                 <ImageWithScrollEffect src={'/assets/G1.png'} alt={'ARYAN BHARGAV'} />
-                <Paragraph paragraph={paragraph}/>
+                <Paragraph paragraph={"Experienced software engineer specializing in Python, C, Java, and web development with Next.js, HTML5, and CSS. Exploring Android development using Flutter. Currently working as a Software Engineer Fellow at @Headstarter AI, with strong expertise in cloud computing using Google Cloud and Firebase, DevOps practices with Kubernetes and Linux, and API integration involving LangChain and OpenAI API. Dedicated to continuous learning and collaboration, I focus on developing innovative projects and building impactful technology solutions."}/>
             </div>
                 
             </div>
@@ -170,7 +169,7 @@ export default function PaymentPage() {
                 <Title paragraph={"shatha dalhoumy"} />
                 <Paragraph paragraph={'BackEnd Developer'}/>
                 <ImageWithScrollEffect src={'/assets/G2.png'} alt={'shatha dalhoumy'} />
-                <Paragraph paragraph={paragraph}/>
+                <Paragraph paragraph={"Enthusiastic computer science student that is eager to learn"}/>
                 </div>
             </div>
             <div className='w-full flex justify-end'>
@@ -179,7 +178,7 @@ export default function PaymentPage() {
                 <Title paragraph={"Abdulrahman Mohammed"} />
                 <Paragraph paragraph={'Full-stack Developer'}/>
                 <ImageWithScrollEffect src={'/assets/G4.png'} alt={'Abdulrahman Mohammed'} />
-                <Paragraph paragraph={paragraph}/>
+                <Paragraph paragraph={"A passionate developer with Knowledge in Fields such as FullStack Development, AI, Cross-platform Development, Logic design, and Circuits design. Focus on creating high-quality high-qualityprojects that can change the world."}/>
                 </div>
             </div>
             <div className='w-full flex justify-center'>
@@ -188,10 +187,9 @@ export default function PaymentPage() {
                 <Title paragraph={"Hibah Sindi"} />
                 <Paragraph paragraph={'Data Science / FrontEnd Developer'}/>
                 <ImageWithScrollEffect src={'/assets/G3.png'} alt={'Hibah Sindi'} />
-                <Paragraph paragraph={paragraph}/>
+                <Paragraph paragraph={"A machine learning engineer intern with a Google TensorFlow developer certification, possessing a strong foundation in artificial intelligence (AI), machine learning (ML), data engineering (DE), and robotics. A passion for these fields drives ongoing exploration and updates on the latest advancements. Expertise in building and deploying ML models using TensorFlow, one of the industry's leading frameworks, is demonstrated through the Google TensorFlow certification. This certification validates the ability to develop deep learning models, optimize performance, and deploy solutions at scale. In addition to AI and ML, a keen interest in the Internet of Things (IoT) is held. Multidisciplinary projects that integrate these technologies are enjoyed, enabling the creation of innovative solutions that effectively leverage data and intelligent systems. As a self-learner, a commitment to expanding knowledge is maintained through the exploration of new algorithms, techniques, and technologies. Active engagement with online communities and participation in competitions are undertaken to stay ahead of industry trends and quickly adapt to new concepts. This adaptability allows real-world challenges to be tackled with confidence and creativity."}/>
                 </div>
             </div>
-            
         </div>
         </Section>
         <Section theme='dark' setTheme={setTheme}>
