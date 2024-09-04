@@ -33,7 +33,7 @@ const Footer = () => {
         <div className="grid place-content-center gap-10  px-8 py-24 text-black dark:text-white">
           <FlipLink href="https://x.com/cardifyai">Twitter</FlipLink>
           <FlipLink href="https://www.linkedin.com/company/cardifyaii">Linkedin</FlipLink>
-          <FlipLink href="#">YouTube</FlipLink>
+          <FlipLink href="https://www.youtube.com/@ElMundoDeLaProgramadora">YouTube</FlipLink>
           <FlipLink href="https://www.instagram.com/cardifyai/">Instagram</FlipLink>
         </div>
       </div>
