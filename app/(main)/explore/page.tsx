@@ -5,8 +5,8 @@ import { Container, Grid, Typography, CardMedia } from '@mui/material';
 import { useAuth } from '@clerk/nextjs';
 
  
-
-
+/*
+i used this to mock 
 interface Quiz {
   id: string;
   title: string;
@@ -145,12 +145,8 @@ const ExplorePage: React.FC = () => {
   );
 };
 
-export default ExplorePage;
-/*
-import React, { useEffect, useState } from 'react';
-import { Card, CardContent } from "@/components/ui/card"
-import { Container, Grid,  Typography, CardMedia} from '@mui/material';
-import { useAuth } from '@clerk/nextjs';
+export default ExplorePage;*/
+
 interface Quiz {
   id: string;
   title: string;
@@ -209,7 +205,7 @@ const PostCard: React.FC<{ post: Post; onLike: (id: string) => void; liked: bool
           >
               {liked ? '❤️ Liked' : '🤍 Like'}
             </button>
-            <Typography variant="body2">
+            <Typography variant="body2" padding="10px">
               {post.likes} {post.likes === 1 ? 'like' : 'likes'}
             </Typography>
           </div>
@@ -310,4 +306,3 @@ const ExplorePage: React.FC = () => {
 
 export default ExplorePage;
 
-*/
