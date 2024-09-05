@@ -27,6 +27,8 @@ model User {
 
   Files             File[]
   playlists         Playlist[]
+  posts   Post[]
+  likes   Like[]
 }
 
 
