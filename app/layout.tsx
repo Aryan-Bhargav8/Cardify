@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import {ClerkProvider} from "@clerk/nextjs"
 import { Inter } from "next/font/google";
 import "./globals.css";
-import {ThemeProvider} from "@/components/providers/theme-provider";
-import {Toaster} from "@/components/ui/toaster";
-import NavBar from "@/components/nav/nav-bar";
 
 const inter = Inter({ subsets: ["latin"] }); 
 
@@ -18,23 +15,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-          >
-            {children}
-            <NavBar/>
-            <Toaster />
-          </ThemeProvider>
-        </body>
-      </html>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
+    </html>
     </ClerkProvider>
   );
 }
