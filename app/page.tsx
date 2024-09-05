@@ -32,7 +32,8 @@ import Header from '@/components/nav/Header';
 import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook, IconClipboard } from '@tabler/icons-react';//   IconDollarSign,
 import { useRouter } from 'next/navigation';
 import Footer from '@/components/Footer';
-import Title from '@/components/Title'
+import Title from '@/components/Title';
+import NavBar from '@/components/nav/nav-bar';
 
 import {
   useMotionTemplate,
@@ -91,64 +92,7 @@ export default function Home() {
   })
  
 
-  const links = [
-    {
-      title: "Home",
-      icon: (
-        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "/",
-    },
-    {
-      title: "Pricing",
-      icon: (
-        <IconCurrencyDollar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "/payment",
-    },
-    {
-      title: "Chat",
-      icon: (
-        <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-    {
-      title: "Contact",
-      icon: (
-        <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "/contact",
-    },
-    {
-      title: "Video",
-      icon: (
-        <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-    {
-      title: "Document",
-      icon: (
-        <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-    {
-      title: "Flashcards",
-      icon: (
-        <IconBook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-    {
-      title: "Quizzes", // New entry for quizzes
-      icon: (
-        <IconClipboard className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "/quizzes", 
-    },
-  ];
+  
 
 
   const firstText = useRef(null);
@@ -208,10 +152,7 @@ export default function Home() {
     <div className={`${theme}`}>
       
       <div className="flex items-center justify-center  w-full">
-      <FloatingDock
-        mobileClassName="" 
-        items={links}
-      />
+      <NavBar />
       </div>
   <Section theme='dark' setTheme={setTheme}>
     <AuroraHero />
@@ -297,7 +238,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <main className="max-w-[90%] md:max-w-[70%] mx-auto my-8 z-50">
+        <main className="max-w-[90%] md:max-w-[70%] mx-auto my-8 z-10">
         <h1 className="text-white font-bold text-4xl md:text-6xl my-8 text-center">
           Change your experience with our features
         </h1>

@@ -12,6 +12,7 @@ import Paragraph from '@/components/Paragraph';
 import Image from "next/image";
 import GradientButton from '@/components/GradientButton';
 import Footer from '@/components/Footer';
+import NavBar from '@/components/nav/nav-bar';
 
 
 const word = 'Welcome to the Cardify payment page! We’re committed to providing you with a seamless and secure transaction experience. Here’s everything you need to know to complete your purchase.';
@@ -122,64 +123,64 @@ export default function PaymentPage() {
 
     let xPercent = 0;
     let direction = -1;
-    const links = [
-      {
-        title: "Home",
-        icon: (
-          <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/",
-      },
-      {
-        title: "Pricing",
-        icon: (
-          <IconCurrencyDollar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/payment",
-      },
-      {
-        title: "Chat",
-        icon: (
-          <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Contact",
-        icon: (
-          <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/contact",
-      },
-      {
-        title: "Video",
-        icon: (
-          <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Document",
-        icon: (
-          <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Flashcards",
-        icon: (
-          <IconBook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Quizzes", // New entry for quizzes
-        icon: (
-          <IconClipboard className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/quizzes", 
-      },
-    ];
+    // const links = [
+    //   {
+    //     title: "Home",
+    //     icon: (
+    //       <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //     ),
+    //     href: "/",
+    //   },
+    //   {
+    //     title: "Pricing",
+    //     icon: (
+    //       <IconCurrencyDollar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //     ),
+    //     href: "/payment",
+    //   },
+    //   {
+    //     title: "Chat",
+    //     icon: (
+    //       <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //     ),
+    //     href: "#",
+    //   },
+    //   {
+    //     title: "Contact",
+    //     icon: (
+    //       <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //     ),
+    //     href: "/contact",
+    //   },
+    //   {
+    //     title: "Video",
+    //     icon: (
+    //       <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //     ),
+    //     href: "#",
+    //   },
+    //   {
+    //     title: "Document",
+    //     icon: (
+    //       <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //     ),
+    //     href: "#",
+    //   },
+    //   {
+    //     title: "Flashcards",
+    //     icon: (
+    //       <IconBook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //     ),
+    //     href: "#",
+    //   },
+    //   {
+    //     title: "Quizzes", // New entry for quizzes
+    //     icon: (
+    //       <IconClipboard className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //     ),
+    //     href: "/quizzes", 
+    //   },
+    // ];
     const [payment, setPayment] = useState(0);
     const handlePricing = (amount: number) => {
     setPayment(amount);
@@ -189,10 +190,7 @@ export default function PaymentPage() {
   return (
     <div className={`${theme}`}>
         <div className="flex items-center justify-center  w-full">
-            <FloatingDock
-                mobileClassName="" 
-                items={links}
-            />
+        <NavBar />
         </div>
         
         

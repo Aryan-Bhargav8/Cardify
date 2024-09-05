@@ -11,6 +11,7 @@ import Paragraph from '@/components/Paragraph';
 import Image from "next/image";
 import GradientButton from '@/components/GradientButton';
 import Footer from '@/components/Footer';
+import NavBar from '@/components/nav/nav-bar';
 
 const paragraph = "At Cardify, we believe that studying smart is the key to academic success. Our Frequently Asked Questions (FAQ) section is designed to provide students like you with quick answers to common questions about our resources, study techniques, and how to make the most of your learning experience.";
 const paragraph2 = "Whether you’re looking for tips on effective study methods, information about our tools, or guidance on how to balance your studies with other commitments, you’ll find valuable insights here.";
@@ -69,64 +70,7 @@ export default function PaymentPage() {
 
     let xPercent = 0;
     let direction = -1;
-    const links = [
-      {
-        title: "Home",
-        icon: (
-          <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/",
-      },
-      {
-        title: "Pricing",
-        icon: (
-          <IconCurrencyDollar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/payment",
-      },
-      {
-        title: "Chat",
-        icon: (
-          <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Contact",
-        icon: (
-          <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/contact",
-      },
-      {
-        title: "Video",
-        icon: (
-          <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Document",
-        icon: (
-          <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Flashcards",
-        icon: (
-          <IconBook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Quizzes", // New entry for quizzes
-        icon: (
-          <IconClipboard className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/quizzes", 
-      },
-    ];
+    
     
       const [activeIndex, setActiveIndex] = useState(null);
 
@@ -173,10 +117,7 @@ export default function PaymentPage() {
   return (
     <div className={`${theme}`}>
         <div className="flex items-center justify-center  w-full">
-            <FloatingDock
-                mobileClassName="" 
-                items={links}
-            />
+        <NavBar />
         </div>
         
         <Section theme='dark' setTheme={setTheme}>

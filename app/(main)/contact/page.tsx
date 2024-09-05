@@ -14,6 +14,7 @@ import { twMerge } from "tailwind-merge";
 import { FiArrowRight, FiMail, FiMapPin } from "react-icons/fi";
 import { SiTiktok, SiYoutube, SiX, SiLinkedin, SiInstagram } from "react-icons/si";
 import { motion } from "framer-motion";
+import NavBar from '@/components/nav/nav-bar';
 
 
 const paragraph = "We’re here to support you on your journey to studying smart, not hard! Whether you have questions about our services, need assistance with using our quizzes and flashcards, or want to share your feedback, we’d love to hear from you.";
@@ -280,64 +281,7 @@ export default function PaymentPage() {
 
     let xPercent = 0;
     let direction = -1;
-    const links = [
-      {
-        title: "Home",
-        icon: (
-          <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/",
-      },
-      {
-        title: "Pricing",
-        icon: (
-          <IconCurrencyDollar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/payment",
-      },
-      {
-        title: "Chat",
-        icon: (
-          <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Contact",
-        icon: (
-          <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/contact",
-      },
-      {
-        title: "Video",
-        icon: (
-          <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Document",
-        icon: (
-          <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Flashcards",
-        icon: (
-          <IconBook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-      },
-      {
-        title: "Quizzes", // New entry for quizzes
-        icon: (
-          <IconClipboard className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "/quizzes", 
-      },
-    ];
+    
     const [payment, setPayment] = useState(0);
     const handlePricing = (amount: number) => {
     setPayment(amount);
@@ -347,10 +291,7 @@ export default function PaymentPage() {
   return (
     <div className={`${theme}`}>
         <div className="flex items-center justify-center  w-full">
-            <FloatingDock
-                mobileClassName="" 
-                items={links}
-            />
+        <NavBar />
         </div>
         
         
