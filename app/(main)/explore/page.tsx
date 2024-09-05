@@ -227,8 +227,6 @@ const ExplorePage: React.FC = () => {
         .then((res) => res.json())
         .then(({ posts, likedPostIds }) => {
           setPosts(posts);
-
-          // Map user likes
           const likes = likedPostIds.reduce((acc: { [key: string]: boolean }, postId: string) => {
             acc[postId] = true;
             return acc;
