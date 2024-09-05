@@ -1,16 +1,12 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import {cn} from "@/lib/utils";
 import gsap from 'gsap';
 import Section from '@/components/Section';
 import React, { useEffect, useState, useRef } from 'react';
-import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook, IconClipboard } from '@tabler/icons-react';//   IconDollarSign,
 import { ScrollTrigger } from 'gsap/all';
 import Header from '@/components/nav/Header';
-import { FloatingDock } from "@/components/ui/floating-dock";
 import Paragraph from '@/components/Paragraph';
 import Image from "next/image";
-import GradientButton from '@/components/GradientButton';
 import Footer from '@/components/Footer';
 import Title from '@/components/Title';
 import ImageWithScrollEffect from '@/components/Image';
