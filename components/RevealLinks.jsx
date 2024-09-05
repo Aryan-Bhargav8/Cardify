@@ -5,12 +5,13 @@ import { motion } from "framer-motion";
 const DURATION = 0.25;
 const STAGGER = 0.025;
 
-const FlipLink = ({ children, href }) => {
+const FlipLink = ({ children, event={}, href='#' }) => {
   return (
-    <motion.a
+    <motion.button
       initial="initial"
       whileHover="hovered"
       href={href}
+      onClick={event}
       className="relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase sm:text-7xl md:text-8xl lg:text-9xl"
       style={{
         lineHeight: 0.75,
@@ -62,7 +63,7 @@ const FlipLink = ({ children, href }) => {
           </motion.span>
         ))}
       </div>
-    </motion.a>
+    </motion.button>
   );
 };
 

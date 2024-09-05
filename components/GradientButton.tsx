@@ -7,7 +7,7 @@ const GradientButton = ({ text, href }) => {
         
         <motion.a
             href={href}
-            className="p-4 rounded-lg text-white bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 cursor-pointer"
+            className="py-5 px-10 rounded-lg text-white bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 cursor-pointer"
             initial={{ scale: 1, rotate: 0 }}
             whileHover={{
                 scale: 1.1,
