@@ -89,7 +89,7 @@ export default function Dashboard() {
                 {files.map(pdf => (
                   <Card key={pdf.id} className="hover:shadow-md transition-shadow duration-200">
                     <CardContent className="flex items-center justify-between p-4">
-                      <div className="flex items-center cursor-pointer" onClick={() => openPdf(`/app/pdf/${pdf.db_id}`)}>
+                      <div className="flex items-center cursor-pointer" onClick={() => openPdf(`/api/pdf/${pdf.db_id}`)}>
                         <FileIcon className="mr-2 h-6 w-6 text-blue-500" />
                         <span className="text-sm font-medium">{pdf.name}</span>
                       </div>
