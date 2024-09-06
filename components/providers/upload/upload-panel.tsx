@@ -35,7 +35,7 @@ export default function UploadPanel() {
         {isOpen ? 'Close' : 'Uploads'}
       </Button>
 
-      <Card className={`fixed right-4 top-4 w-fit md:max-w-[50%] transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <Card className={`fixed right-4 top-4 w-fit md:min-w-[20%] md:max-w-[50%] transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <CardContent className="p-4">
           <h3 className="text-lg font-semibold mb-4">Uploads</h3>
           <ScrollArea className="h-[calc(100vh-12rem)] pr-4">

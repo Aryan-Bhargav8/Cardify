@@ -3,12 +3,14 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import UploadPanel from "@/components/providers/upload/upload-panel";
+import {useFileProvider} from "@/components/providers/files-provider";
 
 // Types
 export type UploadStatus = 'queued' | 'uploading' | 'completed' | 'error';
 
 export interface UploadItem {
   id: string;
+  db_id: string;
   file: File;
   progress: number;
   status: UploadStatus;
@@ -35,10 +37,12 @@ export const useUpload = () => {
 // Provider component
 export const UploadProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [uploads, setUploads] = useState<UploadItem[]>([]);
+  const filesProvider = useFileProvider();
 
   const uploadFile = useCallback((file: File , title: string) => {
     const newUpload: UploadItem = {
       id: Date.now().toString(),
+      db_id: "",
       file,
       progress: 0,
       status: 'queued',
@@ -58,7 +62,7 @@ export const UploadProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       const chunkSize = 1024 * 1024; // 1MB chunks
       const chunks = Math.ceil(file.size / chunkSize);
 
-      let fId = null;
+      let fId: string | null = null;
       for (let i = 0; i < chunks; i++) {
         const chunk = file.slice(i * chunkSize, (i + 1) * chunkSize);
         const formData = new FormData();
@@ -83,7 +87,7 @@ export const UploadProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           const progress = Math.round(((i + 1) / chunks) * 100);
           setUploads((prevUploads) =>
             prevUploads.map((u) =>
-              u.id === newUpload.id ? { ...u, progress } : u
+              u.id === newUpload.id ? { ...u, progress , db_id: fId ?? "null" } : u
             )
           );
         } catch (error) {
@@ -96,6 +100,13 @@ export const UploadProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           return;
         }
       }
+
+      filesProvider.addFile({
+        db_id: fId ?? "FID-WAS-NULL-SOMEHOW",
+        name: title,
+        id: newUpload.id,
+        status: 'idle',
+      })
 
       setUploads((prevUploads) =>
         prevUploads.map((u) =>

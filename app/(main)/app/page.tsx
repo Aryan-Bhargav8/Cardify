@@ -1,21 +1,21 @@
-"use client";
 
-import {useUpload} from "@/components/providers/upload-provider";
 import React from "react";
+import Dashboard from "@/app/(main)/app/page-inner";
+import {db} from "@/lib/db";
+import {currentUserProfile} from "@/lib/user-pro";
 
-const MyComponent = () => {
-  const { uploadFile } = useUpload()
+const Page = async () => {
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file) {
-      uploadFile(file , file.name)
+  const user = await currentUserProfile(true);
+  if (!user) return;
+
+  const files = await db.file.findMany({
+    where: {
+      userId: user.id,
     }
-  }
+  })
 
-  return <div className="w-full h-screen flex flex-col">
-    <input type="file" onChange={handleFileChange}/>
-  </div>
+  return <Dashboard/>;
 }
 
-export default MyComponent;
+export default Page;

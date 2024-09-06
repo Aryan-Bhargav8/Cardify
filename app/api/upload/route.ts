@@ -67,11 +67,10 @@ export async function POST(req: Request, {}) {
 
         const file = await db.file.update({
           where: {
-            path: join(uploadDir, fID),
+            path: join('uploads', fID),
           },
           data: {
             state: "COMPLETE",
-            // thumbnail: imgPath,
           }
         });
         await db.fileContent.create({
