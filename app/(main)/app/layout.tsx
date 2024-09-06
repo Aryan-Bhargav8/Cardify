@@ -1,10 +1,15 @@
 import React from 'react';
+import {UploadProvider} from "@/components/providers/upload-provider";
 
-const Layout = () => {
+const Layout = (
+  {
+    children,
+  } : { children: React.ReactNode },
+) => {
   return (
-    <div>
-
-    </div>
+    <UploadProvider>
+      {children}
+    </UploadProvider>
   );
 };
 
