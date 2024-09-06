@@ -22,6 +22,6 @@
     },
     "target": "es2017" // Or higher
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/web-scraper.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lib/web-scraper.js", "app/(main)/quizzes/page.jsx"],
   "exclude": ["node_modules"]
 }
