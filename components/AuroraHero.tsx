@@ -9,28 +9,10 @@ import {
   motion,
   animate,
 } from "framer-motion";
-import Header from '@/components/nav/Header';
 import Link from 'next/link';
 import GradientButton from '@/components/GradientButton';
 const COLORS_TOP = ["#a855f7", "#8b5cf6", "#ec4899", "#DD335C"];
 
-
-
-// export function PlaceholdersAndVanishInputDemo() {
-//     const placeholders = [
-//         "Put your YouTube link to start",
-//         "Put your PDF link to start",
-//         "Put your paper link to start",
-//       ];
-   
-//     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//       console.log(e.target.value);
-//     };
-//     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-//       e.preventDefault();
-//       console.log("submitted");
-//     };
-// }
 
 
 export const AuroraHero = () => {
@@ -42,7 +24,6 @@ export const AuroraHero = () => {
     "Write a Javascript method to reverse a string",
     "How to assemble your own PC?",
   ];
- 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
   };
@@ -92,7 +73,7 @@ export const AuroraHero = () => {
     <h1 className="text-7xl xl:text-9xl font-bold gradient-text animate-gradient">
       Cardify
     </h1>
-    <h3 className="text-5xl xl:text-7xl font-bold text-neutral-50 ">
+    <h3 className="text-5xl xl:text-7xl font-bold text-neutral-50 text-center">
       Study Smart Not Hard!
     </h3>
 

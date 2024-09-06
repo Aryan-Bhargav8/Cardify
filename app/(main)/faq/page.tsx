@@ -1,76 +1,19 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import gsap from 'gsap';
 import Section from '@/components/Section';
 import React, { useEffect, useState, useRef } from 'react';
-import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook, IconClipboard } from '@tabler/icons-react';//   IconDollarSign,
-import { ScrollTrigger } from 'gsap/all';
 import Header from '@/components/nav/Header';
-import { FloatingDock } from "@/components/ui/floating-dock";
 import Paragraph from '@/components/Paragraph';
 import Image from "next/image";
-import GradientButton from '@/components/GradientButton';
 import Footer from '@/components/Footer';
 import NavBar from '@/components/nav/nav-bar';
 
 const paragraph = "At Cardify, we believe that studying smart is the key to academic success. Our Frequently Asked Questions (FAQ) section is designed to provide students like you with quick answers to common questions about our resources, study techniques, and how to make the most of your learning experience.";
 const paragraph2 = "Whether you’re looking for tips on effective study methods, information about our tools, or guidance on how to balance your studies with other commitments, you’ll find valuable insights here.";
-const paragraph3 = "Feel free to reach our team for any additional questions.";
-const paragraph4 = ""
 
 
 
 export default function PaymentPage() {
     const [theme, setTheme] = useState('light');
-    const firstText = useRef(null);
-    const secondText = useRef(null);
-    const slider = useRef(null);
-
-    useEffect( () => {
-        gsap.registerPlugin(ScrollTrigger);
-        requestAnimationFrame(animate);
-        gsap.to(slider.current, {
-          scrollTrigger: {
-            trigger: document.documentElement,
-            scrub: 0.25,
-            start: 0,
-            end: window.innerHeight,
-            onUpdate: e => direction = e.direction * -1
-          },
-          x: "-500px",
-        })
-        
-      }, [])
-      const animate = () => {
-        if(xPercent < -100){
-          xPercent = 0;
-        }
-        else if(xPercent > 0){
-          xPercent = -100;
-        }
-        gsap.set(firstText.current, {xPercent: xPercent})
-        gsap.set(secondText.current, {xPercent: xPercent})
-        xPercent += 0.1 * direction;
-        requestAnimationFrame(animate);
-      };
-      const getMousePosition = (e: React.MouseEvent<Element, MouseEvent>) => {
-
-        const { width, height, left, top } = e.currentTarget.getBoundingClientRect();
-    
-        const currentMouseX = e.clientX - left;
-        const currentMouseY = e.clientY - top;
-    
-        return {
-          currentMouseX,
-          currentMouseY,
-          containerWidth: width, 
-          containerHight: height,
-        };
-      };
-
-    let xPercent = 0;
-    let direction = -1;
-    
     
       const [activeIndex, setActiveIndex] = useState(null);
 
@@ -127,7 +70,7 @@ export default function PaymentPage() {
           <div className="flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
             <div>
             <h2 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient pb-12 text-center">
-             F&Q Page
+              F&Q Page
             </h2>
             <div className="">
               <div className="relative sm:m-6 lg:w-full h-[30rem]">
@@ -145,11 +88,9 @@ export default function PaymentPage() {
               <div className='sm:w-full lg:w-1/2  h-full'>
                   <Paragraph paragraph={paragraph}/>
               </div>
-                  
               </div>
               
-              <div className='w-full flex justify-end'>
-                  
+              <div className='w-full flex justify-end mb-10'>
                   <div className='sm:w-full lg:w-1/2'>
                   <Paragraph paragraph={paragraph2}/>
                   </div>

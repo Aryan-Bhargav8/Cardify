@@ -1,12 +1,9 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import gsap from 'gsap';
 import Section from '@/components/Section';
 import React, { useEffect, useState, useRef } from 'react';
-import { ScrollTrigger } from 'gsap/all';
 import Header from '@/components/nav/Header';
 import Paragraph from '@/components/Paragraph';
-import Image from "next/image";
 import Footer from '@/components/Footer';
 import Title from '@/components/Title';
 import ImageWithScrollEffect from '@/components/Image';
@@ -16,54 +13,6 @@ import NavBar from '@/components/nav/nav-bar';
 
 export default function PaymentPage() {
     const [theme, setTheme] = useState('light');
-    const firstText = useRef(null);
-    const secondText = useRef(null);
-    const slider = useRef(null);
-
-    useEffect( () => {
-        gsap.registerPlugin(ScrollTrigger);
-        requestAnimationFrame(animate);
-        gsap.to(slider.current, {
-          scrollTrigger: {
-            trigger: document.documentElement,
-            scrub: 0.25,
-            start: 0,
-            end: window.innerHeight,
-            onUpdate: e => direction = e.direction * -1
-          },
-          x: "-500px",
-        })
-        
-      }, [])
-      const animate = () => {
-        if(xPercent < -100){
-          xPercent = 0;
-        }
-        else if(xPercent > 0){
-          xPercent = -100;
-        }
-        gsap.set(firstText.current, {xPercent: xPercent})
-        gsap.set(secondText.current, {xPercent: xPercent})
-        xPercent += 0.1 * direction;
-        requestAnimationFrame(animate);
-      };
-      const getMousePosition = (e: React.MouseEvent<Element, MouseEvent>) => {
-
-        const { width, height, left, top } = e.currentTarget.getBoundingClientRect();
-    
-        const currentMouseX = e.clientX - left;
-        const currentMouseY = e.clientY - top;
-    
-        return {
-          currentMouseX,
-          currentMouseY,
-          containerWidth: width, 
-          containerHight: height,
-        };
-      };
-
-    let xPercent = 0;
-    let direction = -1;
     
     const [history, setHistory] = useState([]);
     const router = useRouter();

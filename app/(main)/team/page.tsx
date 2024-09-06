@@ -1,76 +1,17 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import {cn} from "@/lib/utils";
-import gsap from 'gsap';
 import Section from '@/components/Section';
 import React, { useEffect, useState, useRef } from 'react';
-import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook, IconClipboard } from '@tabler/icons-react';//   IconDollarSign,
-import { ScrollTrigger } from 'gsap/all';
 import Header from '@/components/nav/Header';
-import { FloatingDock } from "@/components/ui/floating-dock";
 import Paragraph from '@/components/Paragraph';
-import Image from "next/image";
-import GradientButton from '@/components/GradientButton';
 import Footer from '@/components/Footer';
 import Title from '@/components/Title';
 import ImageWithScrollEffect from '@/components/Image';
 import NavBar from '@/components/nav/nav-bar';
 
 
-
-
 export default function PaymentPage() {
     const [theme, setTheme] = useState('light');
-    const firstText = useRef(null);
-    const secondText = useRef(null);
-    const slider = useRef(null);
-
-    useEffect( () => {
-        gsap.registerPlugin(ScrollTrigger);
-        requestAnimationFrame(animate);
-        gsap.to(slider.current, {
-          scrollTrigger: {
-            trigger: document.documentElement,
-            scrub: 0.25,
-            start: 0,
-            end: window.innerHeight,
-            onUpdate: e => direction = e.direction * -1
-          },
-          x: "-500px",
-        })
-        
-      }, [])
-      const animate = () => {
-        if(xPercent < -100){
-          xPercent = 0;
-        }
-        else if(xPercent > 0){
-          xPercent = -100;
-        }
-        gsap.set(firstText.current, {xPercent: xPercent})
-        gsap.set(secondText.current, {xPercent: xPercent})
-        xPercent += 0.1 * direction;
-        requestAnimationFrame(animate);
-      };
-      const getMousePosition = (e: React.MouseEvent<Element, MouseEvent>) => {
-
-        const { width, height, left, top } = e.currentTarget.getBoundingClientRect();
-    
-        const currentMouseX = e.clientX - left;
-        const currentMouseY = e.clientY - top;
-    
-        return {
-          currentMouseX,
-          currentMouseY,
-          containerWidth: width, 
-          containerHight: height,
-        };
-      };
-
-    let xPercent = 0;
-    let direction = -1;
-    
-
+  
   return (
     <div className={`${theme}`}>
         <div className="flex items-center justify-center  w-full">
@@ -128,7 +69,7 @@ export default function PaymentPage() {
                 <Title paragraph={"Hibah Sindi"} />
                 <Paragraph paragraph={'Data Science / FrontEnd Developer'}/>
                 <ImageWithScrollEffect src={'/assets/G3.png'} alt={'Hibah Sindi'} />
-                <Paragraph paragraph={"A machine learning engineer intern with a Google TensorFlow developer certification, possessing a strong foundation in artificial intelligence (AI), machine learning (ML), data engineering (DE), and robotics. A passion for these fields drives ongoing exploration and updates on the latest advancements. Expertise in building and deploying ML models using TensorFlow, one of the industry's leading frameworks, is demonstrated through the Google TensorFlow certification. This certification validates the ability to develop deep learning models, optimize performance, and deploy solutions at scale. In addition to AI and ML, a keen interest in the Internet of Things (IoT) is held. Multidisciplinary projects that integrate these technologies are enjoyed, enabling the creation of innovative solutions that effectively leverage data and intelligent systems. As a self-learner, a commitment to expanding knowledge is maintained through the exploration of new algorithms, techniques, and technologies. Active engagement with online communities and participation in competitions are undertaken to stay ahead of industry trends and quickly adapt to new concepts. This adaptability allows real-world challenges to be tackled with confidence and creativity."}/>
+                <Paragraph paragraph={"A Certified TensorFlow Developer and a passionate self-learner. Driven to build innovative and impactful applications using cutting-edge technologies. Developed a deep fascination with machine learning and its potential to solve complex real-world problems."}/>
                 </div>
             </div>
         </div>

@@ -1,14 +1,9 @@
 'use client';
-import gsap from 'gsap';
 import Section from '@/components/Section';
 import React, { useEffect, useState, useRef } from 'react';
-import { IconHome, IconCurrencyDollar, IconMessageCircle, IconMail, IconVideo, IconFileText, IconBook, IconClipboard } from '@tabler/icons-react';//   IconDollarSign,
-import { ScrollTrigger } from 'gsap/all';
 import Header from '@/components/nav/Header';
-import { FloatingDock } from "@/components/ui/floating-dock";
 import Paragraph from '@/components/Paragraph';
 import Image from "next/image";
-import GradientButton from '@/components/GradientButton';
 import Footer from '@/components/Footer';
 import { twMerge } from "tailwind-merge";
 import { FiArrowRight, FiMail, FiMapPin } from "react-icons/fi";
@@ -21,7 +16,10 @@ const paragraph = "We’re here to support you on your journey to studying smart
 const paragraph2 = "Our dedicated team is committed to providing you with the best tools and resources to enhance your learning experience. Please feel free to reach out to us using the form below or through our contact information provided.";
 const paragraph3 = "Your success is our priority, and we’re eager to help you achieve your academic goals!";
 
-const Block = ({ className, ...rest }) => {
+interface BlockProps extends React.HTMLProps<HTMLDivElement> {
+  className?: string; // className is optional
+}
+const Block: React.FC<BlockProps> = ({ className, ...rest }) => {
   return (
     <motion.div
       variants={{
@@ -43,13 +41,14 @@ const Block = ({ className, ...rest }) => {
         damping: 50,
       }}
       className={twMerge(
-        "col-span-4 rounded-lg border border-zinc-700  p-6",
+        "col-span-4 rounded-lg border border-zinc-700 p-6",
         className
       )}
-      {...rest}
+      {...rest} // Spread the rest of the props, ensuring they're compatible
     />
   );
 };
+
 
 const HeaderBlock = () => (
   <Block className="col-span-12 row-span-2 md:col-span-6">
@@ -64,12 +63,13 @@ const HeaderBlock = () => (
         We are here to help 
       </span>
     </h1>
-    <a
-      href="#"
-      className="flex items-center gap-1 text-purple-300 hover:underline"
-    >
-      Contact our <FiArrowRight />
-    </a>
+    <button
+    type="button" // Ensure it's a button
+    className="flex items-center gap-1 text-purple-300 hover:underline"
+    onClick={() => console.log('Contact clicked!')} // Adjust the onClick handler as needed
+>
+    Contact our <FiArrowRight />
+  </button>
   </Block>
 );
 
@@ -82,12 +82,13 @@ const SocialsBlock = () => (
       }}
       className="col-span-6 bg-red-500 md:col-span-3"
     >
-      <a
-        href="#"
-        className="grid h-full place-content-center text-3xl text-white"
-      >
-        <SiYoutube />
-      </a>
+    <button
+    type="button" // Ensure it's a button
+    className="grid h-full place-content-center items-center text-3xl text-white"
+    onClick={() => console.log('YouTube icon clicked!')} // Adjust the onClick handler as needed
+>
+    <SiYoutube />
+</button>
     </Block>
     <Block
       whileHover={{
@@ -96,12 +97,13 @@ const SocialsBlock = () => (
       }}
       className="col-span-6 bg-pink-600 md:col-span-3"
     >
-      <a
-        href="#"
-        className="grid h-full place-content-center text-3xl text-white"
-      >
-        <SiInstagram />
-      </a>
+      <button
+    type="button" // Ensure it's a button
+    className="grid h-full place-content-center text-3xl text-white"
+    onClick={() => console.log('Instagram icon clicked!')} // Adjust the onClick handler as needed
+>
+    <SiInstagram />
+</button>
     </Block>
     <Block
       whileHover={{
@@ -110,12 +112,13 @@ const SocialsBlock = () => (
       }}
       className="col-span-6 bg-blue-600 md:col-span-3"
     >
-      <a
-        href="#"
-        className="grid h-full place-content-center text-3xl text-black"
-      >
-        <SiLinkedin />
-      </a>
+      <button
+    type="button" // Ensure it's a button
+    className="grid h-full place-content-center text-3xl text-black"
+    onClick={() => console.log('LinkedIn icon clicked!')} // Adjust the onClick handler as needed
+>
+    <SiLinkedin />
+</button>
     </Block>
     
     <Block
@@ -125,12 +128,13 @@ const SocialsBlock = () => (
       }}
       className="col-span-6 bg-black md:col-span-3"
     >
-      <a
-        href="#"
-        className="grid h-full place-content-center text-3xl text-white"
-      >
-        <SiX />
-      </a>
+      <button
+    type="button" // Ensure it's a button
+    className="grid h-full place-content-center text-3xl text-white"
+    onClick={() => console.log('SiX icon clicked!')} // Adjust the onClick handler as needed
+>
+    <SiX />
+</button>
     </Block>
   </>
 );
@@ -233,60 +237,6 @@ const EmailListBlock = () => (
 
 export default function PaymentPage() {
     const [theme, setTheme] = useState('light');
-    const firstText = useRef(null);
-    const secondText = useRef(null);
-    const slider = useRef(null);
-
-    useEffect( () => {
-        gsap.registerPlugin(ScrollTrigger);
-        requestAnimationFrame(animate);
-        gsap.to(slider.current, {
-          scrollTrigger: {
-            trigger: document.documentElement,
-            scrub: 0.25,
-            start: 0,
-            end: window.innerHeight,
-            onUpdate: e => direction = e.direction * -1
-          },
-          x: "-500px",
-        })
-        
-      }, [])
-      const animate = () => {
-        if(xPercent < -100){
-          xPercent = 0;
-        }
-        else if(xPercent > 0){
-          xPercent = -100;
-        }
-        gsap.set(firstText.current, {xPercent: xPercent})
-        gsap.set(secondText.current, {xPercent: xPercent})
-        xPercent += 0.1 * direction;
-        requestAnimationFrame(animate);
-      };
-      const getMousePosition = (e: React.MouseEvent<Element, MouseEvent>) => {
-
-        const { width, height, left, top } = e.currentTarget.getBoundingClientRect();
-    
-        const currentMouseX = e.clientX - left;
-        const currentMouseY = e.clientY - top;
-    
-        return {
-          currentMouseX,
-          currentMouseY,
-          containerWidth: width, 
-          containerHight: height,
-        };
-      };
-
-    let xPercent = 0;
-    let direction = -1;
-    
-    const [payment, setPayment] = useState(0);
-    const handlePricing = (amount: number) => {
-    setPayment(amount);
-    };
-
 
   return (
     <div className={`${theme}`}>
@@ -302,7 +252,7 @@ export default function PaymentPage() {
         <div className="flex flex-col justify-center lg:max-w-6xl lg:mx-auto">
           <div>
             <h2 className="text-5xl xl:text-6xl font-bold gradient-text animate-gradient pb-12 text-center">
-             Contact Us
+              Contact Us
             </h2>
             <div className="">
               <div className="relative sm:m-6 lg:w-full h-[20rem]">
@@ -358,7 +308,7 @@ export default function PaymentPage() {
         <AboutBlock />
         <LocationBlock />
         <EmailListBlock />
-      </motion.div>
+        </motion.div>
     </div>
       </Section>
       <Section theme='dark' setTheme={setTheme}>
