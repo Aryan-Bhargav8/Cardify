@@ -62,9 +62,7 @@ export const AuroraHero = () => {
     </div>
     <div>
       <Link href="/login">
-      <button className="flex justify-center">
             <GradientButton text="Sign Up →" href="https://youtube.com" />
-      </button>
       </Link>
     </div>
   </header>

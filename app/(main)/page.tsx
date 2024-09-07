@@ -1,6 +1,5 @@
 'use client';
 import React, { useEffect, useState, useRef, MouseEventHandler } from 'react';
-import Image from "next/image";
 import Section from '@/components/Section';
 import Paragraph from '@/components/Paragraph';
 import Lenis from '@studio-freight/lenis';
@@ -25,7 +24,7 @@ const paragraph = "At Cardify, we believe that studying should be both effective
 const paragraph1 = "Whether you're preparing for an exam, learning a new language, or mastering a new topic, Cardify provides the resources you need to succeed. With our user-friendly interface and diverse features, you can create, share, and study flashcards tailored to your learning style."
 const paragraph2 = "Join thousands of learners who have transformed their study habits with Cardify. Let's make learning easier, together!"
 const paragraph3 = "Say goodbye to information overload! Our Document Summarization feature automatically condenses academic papers, PDFs, and other lengthy texts into concise summaries. Highlight the key points and essential information, making it easier for you to grasp complex subjects quickly."
-const paragraph4 = "In today’s fast-paced academic environment, simply studying hard isn’t enough. To truly excel, you must study smart. Here are some strategies to help you maximize your study potential and achieve your academic goals"
+const paragraph4 = "In today&apos;s fast-paced academic environment, simply studying hard isn&apos;t enough. To truly excel, you must study smart. Here are some strategies to help you maximize your study potential and achieve your academic goals"
 
 export default function Home() {
   const [theme, setTheme] = useState('light');
@@ -40,7 +39,7 @@ export default function Home() {
   useEffect( () => {
     const lenis = new Lenis()
 
-    function raf(time) {
+    function raf(time: number) {
       lenis.raf(time)
       requestAnimationFrame(raf)
     }
