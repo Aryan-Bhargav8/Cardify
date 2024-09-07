@@ -23,11 +23,10 @@ const Section: React.FC<{
 
 
     return (
-        <section className="bg-white dark:bg-black min-h-screen  flex flex-col " 
-        ref={container}>
-            {children}
-        </section>
-
+      <section className="bg-white dark:bg-black min-h-screen flex flex-col "
+               ref={container}>
+          {children}
+      </section>
     );
 };
 // min-h-screen
