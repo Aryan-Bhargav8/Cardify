@@ -11,11 +11,11 @@ const Header = () => {
       </Link>
     </div>
     <div>
-      <Link href="/login">
+      {/* <Link href="/sign-up"> */}
       
-      <GradientButton text="Sign Up →"  onClick={() => window.open('https://youtube.com', '_blank')}  />
+      <GradientButton text="Sign Up →"  onClick={() => window.open('/sign-up')}  />
       
-      </Link>
+      {/* </Link> */}
     </div>
   </header>
   );
