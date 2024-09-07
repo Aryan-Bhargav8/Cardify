@@ -1,7 +1,6 @@
 'use client';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import React, { useRef } from 'react';
-import styles from '@/styles/styles.css';
 
 export default function Paragraph({paragraph}) {
 
