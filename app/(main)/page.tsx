@@ -27,8 +27,6 @@ const paragraph2 = "Join thousands of learners who have transformed their study 
 const paragraph3 = "Say goodbye to information overload! Our Document Summarization feature automatically condenses academic papers, PDFs, and other lengthy texts into concise summaries. Highlight the key points and essential information, making it easier for you to grasp complex subjects quickly."
 const paragraph4 = "In today’s fast-paced academic environment, simply studying hard isn’t enough. To truly excel, you must study smart. Here are some strategies to help you maximize your study potential and achieve your academic goals"
 
-
-
 export default function Home() {
   const [theme, setTheme] = useState('light');
 
