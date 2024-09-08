@@ -1,13 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { getAuth } from '@clerk/nextjs/server';
+import {currentUserProfile} from "@/lib/user-pro";
 
 const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
   try {
     // Get user's ID
-    const { userId } = getAuth(req);
+    const user = await currentUserProfile(false);
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
     // Fetch posts along with quiz and user data
     const posts = await prisma.post.findMany({
@@ -17,10 +21,12 @@ export async function GET(req: NextRequest) {
       },
     });
 
-    if (userId) {
+    if (user.id) {
       // Fetch the posts liked by the user
       const userLikes = await prisma.like.findMany({
-        where: { userId },
+        where: {
+          userId: user.id,
+        },
         select: { postId: true },
       });
 

@@ -1,15 +1,16 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { getAuth } from '@clerk/nextjs/server'; // Clerk for authentication
+import { getAuth } from '@clerk/nextjs/server';
+import {currentUserProfile} from "@/lib/user-pro"; // Clerk for authentication
 
 const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
   const { postId, like } = await req.json();
 
-  const { userId } = getAuth(req); // get user's ID
-  if (!userId) {
+  const user = await currentUserProfile(false);
+  if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -18,7 +19,7 @@ export async function POST(req: NextRequest) {
       // If liking a post, add a record in the Like table
       await prisma.like.create({
         data: {
-          userId,
+          userId: user.id,
           postId,
         },
       });
@@ -34,7 +35,7 @@ export async function POST(req: NextRequest) {
       // If unliking, remove the record from the Like table
       await prisma.like.deleteMany({
         where: {
-          userId,
+          userId: user.id,
           postId,
         },
       });
