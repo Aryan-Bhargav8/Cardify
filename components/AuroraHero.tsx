@@ -61,11 +61,12 @@ export const AuroraHero = () => {
       </Link>
     </div>
     <div>
-      <Link href="/login">
-      <button className="flex justify-center">
-            <GradientButton text="Sign Up →" href="https://youtube.com" />
-      </button>
-      </Link>
+
+      {/* <Link href="/sign-up"> */}
+      
+      <GradientButton text="Sign Up →"  onClick={() => window.open('/sign-up')}  />
+      {/* </Link> */}
+
     </div>
   </header>
 

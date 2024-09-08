@@ -2,11 +2,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const GradientButton = ({ text, onClick }) => {
+const GradientButton = ({ text, href }: { text: string, href: string }) => {
     return (
-        <motion.button
-            onClick={onClick}
-            className="py-5 px-10 rounded-lg text-white bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 cursor-pointer"
+
+        
+        <motion.a
+            href={href}
+            className="p-4 rounded-lg text-white bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 cursor-pointer"
+
             initial={{ scale: 1, rotate: 0 }}
             whileHover={{
                 scale: 1.1,
@@ -21,7 +24,7 @@ const GradientButton = ({ text, onClick }) => {
             transition={{ type: 'spring', stiffness: 300 }}
         >
             {text}
-        </motion.button>
+        </motion.a>
     );
 };
 

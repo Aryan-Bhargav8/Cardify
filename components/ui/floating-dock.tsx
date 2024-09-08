@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 // import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
-import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {AnimatePresence, motion, MotionValue, useMotionValue, useSpring, useTransform} from "framer-motion";
 import Link from "next/link";
 import { useRef, useState } from "react";
 
@@ -82,7 +82,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "fixed bottom-0 w-screen flex justify-center items-center h-24 z-50 shadow-lg",
+        "fixed bottom-0 w-screen flex justify-center items-center h-24 z-40 shadow-lg",
         className
       )}
     >

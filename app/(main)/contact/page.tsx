@@ -12,40 +12,34 @@ import { motion } from "framer-motion";
 import NavBar from '@/components/nav/nav-bar';
 
 
-const paragraph = "We’re here to support you on your journey to studying smart, not hard! Whether you have questions about our services, need assistance with using our quizzes and flashcards, or want to share your feedback, we’d love to hear from you.";
+const paragraph = "We&apos;re here to support you on your journey to studying smart, not hard! Whether you have questions about our services, need assistance with using our quizzes and flashcards, or want to share your feedback, we&apos;d love to hear from you.";
 const paragraph2 = "Our dedicated team is committed to providing you with the best tools and resources to enhance your learning experience. Please feel free to reach out to us using the form below or through our contact information provided.";
-const paragraph3 = "Your success is our priority, and we’re eager to help you achieve your academic goals!";
+const paragraph3 = "Your success is our priority, and we&apos;re eager to help you achieve your academic goals!";
 
 interface BlockProps extends React.HTMLProps<HTMLDivElement> {
   className?: string; // className is optional
+  whileHover?: any; // Added this to support Framer Motion's whileHover prop
+  variants?: any; // Add more MotionProps if needed
 }
-const Block: React.FC<BlockProps> = ({ className, ...rest }) => {
+const Block: React.FC<BlockProps> = ({ className, whileHover, variants, ...rest }) => {
   return (
     <motion.div
-      variants={{
-        initial: {
-          scale: 0.5,
-          y: 50,
-          opacity: 0,
-        },
-        animate: {
-          scale: 1,
-          y: 0,
-          opacity: 1,
-        },
+      variants={variants || {
+        initial: { scale: 0.5, y: 50, opacity: 0 },
+        animate: { scale: 1, y: 0, opacity: 1 },
       }}
+      whileHover={whileHover}
       transition={{
         type: "spring",
         mass: 3,
         stiffness: 400,
         damping: 50,
       }}
-      className={twMerge(
-        "col-span-4 rounded-lg border border-zinc-700 p-6",
-        className
-      )}
-      {...rest} // Spread the rest of the props, ensuring they're compatible
-    />
+      className={twMerge("col-span-4 rounded-lg border border-zinc-700 p-6", className)}
+      // Ensure only valid motion props are passed in
+    >
+      <div {...rest} />
+    </motion.div>
   );
 };
 
@@ -144,7 +138,7 @@ const AboutBlock = () => (
   <Block className="col-span-12 text-3xl leading-snug p-6">
     <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
     <p className="mb-4">
-      We’d love to hear from you! Please fill out the form below, and our team will get back to you as soon as possible.
+      We&apos;d love to hear from you! Please fill out the form below, and our team will get back to you as soon as possible.
     </p>
     
     <form className="p-8 rounded-lg shadow-md">
@@ -181,7 +175,7 @@ const AboutBlock = () => (
         <textarea
           className="shadow appearance-none border-2 bg-black border-neutral-400 rounded  w-full py-2 px-3 text-gray-700 dark:text-neutral-100 leading-tight focus:outline-none focus:shadow-outline"
           id="message"
-          rows="4"
+          rows={4}
           placeholder="Your Message"
           required
         ></textarea>
