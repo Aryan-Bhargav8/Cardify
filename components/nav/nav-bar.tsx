@@ -19,13 +19,13 @@ const NavBar = () => {
           ),
           href: "/payment",
         },
-        {
-          title: "Chat",
-          icon: (
-            <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
+        // {
+        //   title: "Chat",
+        //   icon: (
+        //     <IconMessageCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        //   ),
+        //   href: "#",
+        // },
         {
           title: "Contact",
           icon: (
@@ -33,20 +33,20 @@ const NavBar = () => {
           ),
           href: "/contact",
         },
-        {
-          title: "Video",
-          icon: (
-            <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
-        {
-          title: "Document",
-          icon: (
-            <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-          ),
-          href: "#",
-        },
+        // {
+        //   title: "Video",
+        //   icon: (
+        //     <IconVideo className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        //   ),
+        //   href: "#",
+        // },
+        // {
+        //   title: "Document",
+        //   icon: (
+        //     <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        //   ),
+        //   href: "#",
+        // },
         {
           title: "Flashcards",
           icon: (
