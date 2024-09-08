@@ -256,7 +256,7 @@ const ExplorePage: React.FC = () => {
     }));
 
     try {
-      await fetch('/api/likes', {
+      await fetch('/api/like', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
