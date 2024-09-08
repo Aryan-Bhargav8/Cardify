@@ -18,11 +18,9 @@ const COLORS_TOP = ["#a855f7", "#8b5cf6", "#ec4899", "#DD335C"];
 export const AuroraHero = () => {
   const color = useMotionValue(COLORS_TOP[0]);
   const placeholders = [
-    "What's the first rule of Fight Club?",
-    "Who is Tyler Durden?",
-    "Where is Andrew Laeddis Hiding?",
-    "Write a Javascript method to reverse a string",
-    "How to assemble your own PC?",
+    "Put your PDF link",
+    "Put your document link",
+    "Put you video link",
   ];
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
