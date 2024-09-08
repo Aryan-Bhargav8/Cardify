@@ -1,15 +1,15 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { getAuth } from '@clerk/nextjs/server'; 
+import { getAuth } from '@clerk/nextjs/server';
 
 const prisma = new PrismaClient();
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest) {
   try {
-    // Get  user's ID
+    // Get user's ID
     const { userId } = getAuth(req);
 
-    
+    // Fetch posts along with quiz and user data
     const posts = await prisma.post.findMany({
       include: {
         quiz: true,
@@ -18,30 +18,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     if (userId) {
-      
+      // Fetch the posts liked by the user
       const userLikes = await prisma.like.findMany({
         where: { userId },
         select: { postId: true },
       });
 
       // Get an array of liked post IDs
-      const likedPostIds = userLikes.map((like) => like.postId);
+      const likedPostIds = userLikes.map((like: { postId: any }) => like.postId);
 
       // Return posts with liked status for the current user
-      res.status(200).json({
+      return NextResponse.json({
         posts,
         likedPostIds,
       });
     } else {
-      // If no user is logged in, just return the posts
-      res.status(200).json({
+      // If no user is logged in, return posts without likes
+      return NextResponse.json({
         posts,
-        likedPostIds: [], // No likes if not logged in
+        likedPostIds: [],
       });
     }
   } catch (error) {
     console.error('Error fetching posts:', error);
-    res.status(500).json({ error: 'Failed to fetch posts' });
+    return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
   }
 }
 

@@ -1,16 +1,16 @@
 
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { getAuth } from '@clerk/nextjs/server'; // Clerk for authentication
 
 const prisma = new PrismaClient();
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { postId, like } = req.body;
+export async function POST(req: NextRequest) {
+  const { postId, like } = await req.json();
 
-  const { userId } = getAuth(req); //  get  user's ID
+  const { userId } = getAuth(req); // get user's ID
   if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   try {
@@ -48,12 +48,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     }
 
-    res.status(200).json({ success: true });
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error handling like/unlike:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
+
 /*model for like 
 model Like {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
