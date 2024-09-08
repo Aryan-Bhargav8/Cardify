@@ -12,9 +12,9 @@ const Header = () => {
     </div>
     <div>
       <Link href="/login">
-      <button className="flex justify-center">
-            <GradientButton text="Sign Up →" href="https://youtube.com" />
-      </button>
+      
+      <GradientButton text="Sign Up →"  onClick={() => window.open('https://youtube.com', '_blank')}  />
+      
       </Link>
     </div>
   </header>
