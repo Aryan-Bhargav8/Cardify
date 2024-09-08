@@ -15,23 +15,6 @@ const COLORS_TOP = ["#a855f7", "#8b5cf6", "#ec4899", "#DD335C"];
 
 
 
-// export function PlaceholdersAndVanishInputDemo() {
-//     const placeholders = [
-//         "Put your YouTube link to start",
-//         "Put your PDF link to start",
-//         "Put your paper link to start",
-//       ];
-   
-//     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//       console.log(e.target.value);
-//     };
-//     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-//       e.preventDefault();
-//       console.log("submitted");
-//     };
-// }
-
-
 export const AuroraHero = () => {
   const color = useMotionValue(COLORS_TOP[0]);
   const placeholders = [
