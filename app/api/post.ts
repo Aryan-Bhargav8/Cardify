@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
 
       // Get an array of liked post IDs
-      const likedPostIds = userLikes.map((like) => like.postId);
+      const likedPostIds = userLikes.map((like: { postId: any; }) => like.postId);
 
       // Return posts with liked status for the current user
       res.status(200).json({
