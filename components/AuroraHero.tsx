@@ -60,10 +60,10 @@ export const AuroraHero = () => {
     </div>
     <div>
 
-      {/* <Link href="/sign-up"> */}
-      
-      <GradientButton text="Sign Up →"  href="/sign-up" />
-      {/* </Link> */}
+      <Link href="/sign-up" className="p-4 rounded-lg text-white bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 cursor-pointer" >
+      Sign Up →
+      {/* <GradientButton text="Sign Up →"  href="/sign-up" /> */}
+      </Link>
 
     </div>
   </header>
