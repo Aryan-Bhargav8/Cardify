@@ -25,7 +25,7 @@ export default function PaymentPage() {
         </div>
         <div className="flex-1 flex flex-col justify-center lg:max-w-7xl lg:mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 lg:p-4 md:p-20 sm:p-10">
-            <div className="flex flex-col gap-8 justify-center sm:text-center">              
+            <div className="flex flex-col gap-8 justify-center items-center text-center">              
             <Title paragraph={'Meet Cardify Team'}/>
             <Paragraph paragraph={"At Cardify, our team is our greatest asset. We are a diverse group of passionate individuals committed to excellence and innovation. Together, we strive to achieve our mission."}/>
             </div>
@@ -38,7 +38,7 @@ export default function PaymentPage() {
         <div className='grid grid-col p-40 gap-14 items-center'>
             <div className='w-full justify-center'>
             <div className='sm:w-full lg:w-1/2 h-full'>
-            <div className='flex flex-col justify-center items-center'>
+            <div className='flex flex-col justify-center items-center text-center'>
               <Title paragraph={"ARYAN BHARGAV"} />
               <Paragraph paragraph={'Full-stack Developer'}/>
             </div>
@@ -51,7 +51,7 @@ export default function PaymentPage() {
             </div>
             <div className='w-full flex justify-center align-middle'>
                 <div className='sm:w-full lg:w-1/2'>
-                <div className='flex flex-col justify-center items-center'>
+                <div className='flex flex-col justify-center items-center text-center'>
                 <Title paragraph={"shatha dalhoumy"} />
                 <Paragraph paragraph={'BackEnd Developer'}/>
                 </div>
@@ -63,7 +63,7 @@ export default function PaymentPage() {
             </div>
             <div className='w-full flex justify-end'>
                 <div className='sm:w-full lg:w-1/2'>
-                <div className='flex flex-col justify-center items-center'>
+                <div className='flex flex-col justify-center items-center text-center'>
                   <Title paragraph={"Abdulrahman Mohammed"} />
                   <Paragraph paragraph={'Full-stack Developer'}/>
                 </div>
@@ -75,7 +75,7 @@ export default function PaymentPage() {
             </div>
             <div className='w-full flex justify-center'>
                 <div className='sm:w-full lg:w-1/2'>
-                <div className='flex flex-col justify-center items-center'>
+                <div className='flex flex-col justify-center items-center text-center'>
                 <Title paragraph={"Hibah Sindi"} />
                 <Paragraph paragraph={'Data Science / FrontEnd Developer'}/>
                 </div>
