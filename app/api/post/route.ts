@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import {currentUserProfile} from "@/lib/user-pro";
 import {db} from "@/lib/db";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     // Get user's ID

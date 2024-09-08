@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import {currentUserProfile} from "@/lib/user-pro";
 import {db} from "@/lib/db"; // Clerk for authentication
 
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   const { postId, like } = await req.json();
