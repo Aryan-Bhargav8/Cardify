@@ -15,7 +15,7 @@ const paragraph2 = "Whether you’re looking for tips on effective study methods
 export default function PaymentPage() {
     const [theme, setTheme] = useState('light');
     
-      const [activeIndex, setActiveIndex] = useState(null);
+      const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
       const faqs = [
         {
@@ -52,7 +52,7 @@ export default function PaymentPage() {
         },
       ];
     
-      const toggleFAQ = (index) => {
+      const toggleFAQ = (index: number) => {
         setActiveIndex(activeIndex === index ? null : index);
       };
 

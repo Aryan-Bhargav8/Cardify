@@ -62,7 +62,7 @@ export const AuroraHero = () => {
 
       {/* <Link href="/sign-up"> */}
       
-      <GradientButton text="Sign Up →"  onClick={() => window.open('/sign-up')}  />
+      <GradientButton text="Sign Up →"  href="/sign-up" />
       {/* </Link> */}
 
     </div>

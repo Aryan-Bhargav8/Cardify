@@ -1,30 +1,30 @@
 
-import { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
-import { getAuth } from '@clerk/nextjs/server'; // Clerk for authentication
+import { NextRequest, NextResponse } from 'next/server';
+import {currentUserProfile} from "@/lib/user-pro";
+import {db} from "@/lib/db"; // Clerk for authentication
 
-const prisma = new PrismaClient();
+export const dynamic = 'force-dynamic';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { postId, like } = req.body;
+export async function POST(req: NextRequest) {
+  const { postId, like } = await req.json();
 
-  const { userId } = getAuth(req); //  get  user's ID
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized' });
+  const user = await currentUserProfile(false);
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   try {
     if (like) {
       // If liking a post, add a record in the Like table
-      await prisma.like.create({
+      await db.like.create({
         data: {
-          userId,
+          userId: user.id,
           postId,
         },
       });
 
       // Increment like count in the Post table
-      await prisma.post.update({
+      await db.post.update({
         where: { id: postId },
         data: {
           likes: { increment: 1 },
@@ -32,15 +32,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     } else {
       // If unliking, remove the record from the Like table
-      await prisma.like.deleteMany({
+      await db.like.deleteMany({
         where: {
-          userId,
+          userId: user.id,
           postId,
         },
       });
 
       // Decrement like count in the Post table
-      await prisma.post.update({
+      await db.post.update({
         where: { id: postId },
         data: {
           likes: { decrement: 1 },
@@ -48,12 +48,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     }
 
-    res.status(200).json({ success: true });
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error handling like/unlike:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
+
 /*model for like 
 model Like {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId

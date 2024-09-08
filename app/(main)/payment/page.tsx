@@ -169,7 +169,7 @@ export default function PaymentPage() {
             <div className="flex justify-start mb-4 mt-20">
             <GradientButton
                 text={plan.buttonText}
-                onClick={() => window.open('', '_blank')} // Open in a new tab
+                href="#" // Open in a new tab
             />
             </div>
           </div>
