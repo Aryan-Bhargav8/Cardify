@@ -1,10 +1,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-import { getAuth } from '@clerk/nextjs/server';
-import {currentUserProfile} from "@/lib/user-pro"; // Clerk for authentication
+import {currentUserProfile} from "@/lib/user-pro";
+import {db} from "@/lib/db"; // Clerk for authentication
 
-const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
   const { postId, like } = await req.json();
@@ -17,7 +15,7 @@ export async function POST(req: NextRequest) {
   try {
     if (like) {
       // If liking a post, add a record in the Like table
-      await prisma.like.create({
+      await db.like.create({
         data: {
           userId: user.id,
           postId,
@@ -25,7 +23,7 @@ export async function POST(req: NextRequest) {
       });
 
       // Increment like count in the Post table
-      await prisma.post.update({
+      await db.post.update({
         where: { id: postId },
         data: {
           likes: { increment: 1 },
@@ -33,7 +31,7 @@ export async function POST(req: NextRequest) {
       });
     } else {
       // If unliking, remove the record from the Like table
-      await prisma.like.deleteMany({
+      await db.like.deleteMany({
         where: {
           userId: user.id,
           postId,
@@ -41,7 +39,7 @@ export async function POST(req: NextRequest) {
       });
 
       // Decrement like count in the Post table
-      await prisma.post.update({
+      await db.post.update({
         where: { id: postId },
         data: {
           likes: { decrement: 1 },

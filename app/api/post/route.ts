@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-import { getAuth } from '@clerk/nextjs/server';
 import {currentUserProfile} from "@/lib/user-pro";
-
-const prisma = new PrismaClient();
+import {db} from "@/lib/db";
 
 export async function GET(req: NextRequest) {
   try {
@@ -14,7 +11,7 @@ export async function GET(req: NextRequest) {
     }
 
     // Fetch posts along with quiz and user data
-    const posts = await prisma.post.findMany({
+    const posts = await db.post.findMany({
       include: {
         quiz: true,
         user: true,
@@ -23,7 +20,7 @@ export async function GET(req: NextRequest) {
 
     if (user.id) {
       // Fetch the posts liked by the user
-      const userLikes = await prisma.like.findMany({
+      const userLikes = await db.like.findMany({
         where: {
           userId: user.id,
         },
