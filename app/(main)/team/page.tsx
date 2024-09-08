@@ -38,38 +38,51 @@ export default function PaymentPage() {
         <div className='grid grid-col p-40 gap-14 items-center'>
             <div className='w-full justify-center'>
             <div className='sm:w-full lg:w-1/2 h-full'>
-                <Title paragraph={"ARYAN BHARGAV"} />
-                <Paragraph paragraph={'Full-stack Developer'}/>
+            <div className='flex flex-col justify-center items-center'>
+              <Title paragraph={"ARYAN BHARGAV"} />
+              <Paragraph paragraph={'Full-stack Developer'}/>
+            </div>
                 <ImageWithScrollEffect src={'/assets/G1.png'} alt={'ARYAN BHARGAV'} />
+                <div className='text-center'>
                 <Paragraph paragraph={"Experienced software engineer specializing in Python, C, Java, and web development with Next.js, HTML5, and CSS. Exploring Android development using Flutter. Currently working as a Software Engineer Fellow at @Headstarter AI, with strong expertise in cloud computing using Google Cloud and Firebase, DevOps practices with Kubernetes and Linux, and API integration involving LangChain and OpenAI API. Dedicated to continuous learning and collaboration, I focus on developing innovative projects and building impactful technology solutions."}/>
+                </div>
             </div>
                 
             </div>
             <div className='w-full flex justify-center align-middle'>
-                
                 <div className='sm:w-full lg:w-1/2'>
+                <div className='flex flex-col justify-center items-center'>
                 <Title paragraph={"shatha dalhoumy"} />
                 <Paragraph paragraph={'BackEnd Developer'}/>
+                </div>
                 <ImageWithScrollEffect src={'/assets/G2.png'} alt={'shatha dalhoumy'} />
-                <Paragraph paragraph={"Enthusiastic computer science student that is eager to learn"}/>
+                <div className='text-center'>
+                  <Paragraph paragraph={"Enthusiastic computer science student that is eager to learn"}/>
+                </div>
                 </div>
             </div>
             <div className='w-full flex justify-end'>
                 <div className='sm:w-full lg:w-1/2'>
-                
-                <Title paragraph={"Abdulrahman Mohammed"} />
-                <Paragraph paragraph={'Full-stack Developer'}/>
+                <div className='flex flex-col justify-center items-center'>
+                  <Title paragraph={"Abdulrahman Mohammed"} />
+                  <Paragraph paragraph={'Full-stack Developer'}/>
+                </div>
                 <ImageWithScrollEffect src={'/assets/G4.png'} alt={'Abdulrahman Mohammed'} />
+                <div className='text-center'>
                 <Paragraph paragraph={"A passionate developer with Knowledge in Fields such as FullStack Development, AI, Cross-platform Development, Logic design, and Circuits design. Focus on creating high-quality high-qualityprojects that can change the world."}/>
+                </div>
                 </div>
             </div>
             <div className='w-full flex justify-center'>
                 <div className='sm:w-full lg:w-1/2'>
-                
+                <div className='flex flex-col justify-center items-center'>
                 <Title paragraph={"Hibah Sindi"} />
                 <Paragraph paragraph={'Data Science / FrontEnd Developer'}/>
+                </div>
                 <ImageWithScrollEffect src={'/assets/G3.png'} alt={'Hibah Sindi'} />
+                <div className='text-center'>
                 <Paragraph paragraph={"A Certified TensorFlow Developer and a passionate self-learner. Driven to build innovative and impactful applications using cutting-edge technologies. Developed a deep fascination with machine learning and its potential to solve complex real-world problems."}/>
+                </div>
                 </div>
             </div>
         </div>
