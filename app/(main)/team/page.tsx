@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Header from '@/components/nav/Header';
 import Paragraph from '@/components/Paragraph';
 import Footer from '@/components/Footer';
-import Title from '@/components/Title';
+import Title from '@/components/TItle';
 import ImageWithScrollEffect from '@/components/Image';
 import NavBar from '@/components/nav/nav-bar';
 
